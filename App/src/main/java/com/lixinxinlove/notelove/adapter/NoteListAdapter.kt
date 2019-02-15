@@ -1,0 +1,15 @@
+package com.lixinxinlove.notelove.adapter
+
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
+import com.lixinxinlove.notelove.R
+import com.lixinxinlove.notelove.data.protocol.Note
+
+/**
+ * 列表 adapter
+ */
+class NoteListAdapter(data: MutableList<Note>?) :
+    BaseQuickAdapter<Note, BaseViewHolder>(R.layout.item_note_list, data) {
+    override fun convert(helper: BaseViewHolder?, item: Note?) {
+    }
+}

@@ -3,6 +3,10 @@ package com.lixinxinlove.user.data.db
 import android.content.Context
 import androidx.room.Room
 
+/**
+ * room rom
+ *
+ */
 class NoteDataBaseHelper constructor(context: Context) {
 
     val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "db_room").build()!!

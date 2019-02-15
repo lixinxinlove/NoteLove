@@ -6,26 +6,25 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "note")
 data class Note(
-
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int = 0
-
+    var id: Int = 0                 //id
 ) {
-    @ColumnInfo(name = "name")
-    var name: String? = null
-    @ColumnInfo(name = "gender")
-    var gender: Byte? = 0
-    @ColumnInfo(name = "age")
-    var age: Int? = 0
-    @ColumnInfo(name = "telphone")
-    var telphone: String? = null
+    @ColumnInfo(name = "info")
+    var info: String? = null       //文本内容
+    @ColumnInfo(name = "time")
+    var time: Long = 0             //创建时间
+    @ColumnInfo(name = "theme")
+    var theme: Int? = 0             //页面主题
+    @ColumnInfo(name = "editTime")
+    var editTime: Long = 0          //编辑时间
 
     // 必须有公共构造方法
     constructor() : this(0)
 
     override fun toString(): String {
-        return "UserInfo(id=$id, name='$name', gender=$gender, age=$age, telphone='$telphone')"
+        return "Note(id=$id, info=$info, time=$time, theme=$theme, editTime=$editTime)"
     }
+
 
 }

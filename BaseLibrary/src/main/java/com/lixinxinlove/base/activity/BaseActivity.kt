@@ -11,7 +11,7 @@ import com.kotlin.base.widgets.ProgressLoading
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected lateinit var context: Context
+    protected lateinit var mContext: Context
     abstract fun layoutId(): Int
     abstract fun listener()
     lateinit var mProgressLoading: ProgressLoading
@@ -19,10 +19,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppManager.instance.addActivity(this)
-        context = this
+        mContext = this
         setContentView(layoutId())
         listener()
-        mProgressLoading = ProgressLoading.create(context)
+        mProgressLoading = ProgressLoading.create(mContext)
     }
 
     override fun onDestroy() {

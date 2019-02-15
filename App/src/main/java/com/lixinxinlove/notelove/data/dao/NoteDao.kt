@@ -11,22 +11,22 @@ import io.reactivex.Single
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM note")
-    fun getUsers(): Single<List<Note>>
+    fun getNotes(): Single<MutableList<Note>>
 
     @Query("SELECT * FROM note WHERE id = :id")
-    fun getUser(id: Int): Single<Note>
+    fun getNote(id: Int): Single<Note>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(userInfoList: List<Note>)
+    fun insertAll(noteList: List<Note>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(userInfo: Note)
+    fun insert(note: Note)
 
     @Delete
-    fun deleteUser(userInfo: Note): Single<Int>
+    fun deleteNote(note: Note): Single<Int>
 
     @Delete
-    fun deleteAllUser(users: List<Note>): Single<Int>
+    fun deleteAllNote(notes: List<Note>): Single<Int>
 
     @Transaction
     fun insertNetJobs(list: List<Note>) {
