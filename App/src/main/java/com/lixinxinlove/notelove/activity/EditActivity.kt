@@ -1,5 +1,6 @@
 package com.lixinxinlove.notelove.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -62,6 +63,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
             .subscribe(object : SingleObserver<Long> {
                 override fun onSuccess(t: Long) {
                     Log.e(TAG, "onSuccess")
+                    setResult(Activity.RESULT_OK)
                     finish()
                 }
 

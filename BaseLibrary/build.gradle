@@ -64,7 +64,8 @@ dependencies {
     api "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
-
+    //RecyclerView 侧滑
+    api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
 
     kapt "androidx.room:room-compiler:${roomVersion}"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
