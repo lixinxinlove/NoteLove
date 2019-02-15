@@ -20,7 +20,7 @@ interface NoteDao {
     fun insertAll(noteList: List<Note>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(note: Note)
+    fun insert(note: Note): Single<Long>
 
     @Delete
     fun deleteNote(note: Note): Single<Int>

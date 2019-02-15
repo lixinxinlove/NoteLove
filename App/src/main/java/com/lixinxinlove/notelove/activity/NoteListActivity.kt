@@ -1,11 +1,11 @@
 package com.lixinxinlove.notelove.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
@@ -39,10 +39,10 @@ class NoteListActivity : BaseActivity() {
             getNotes()
         }
 
-
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            startActivity(Intent(this, EditActivity::class.java))
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
         }
     }
 
@@ -50,22 +50,16 @@ class NoteListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         mData = mutableListOf()
-        mAdapter = NoteListAdapter(mData)
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
-        mNoteRecyclerView.adapter = mAdapter
         getNotes()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
@@ -82,7 +76,8 @@ class NoteListActivity : BaseActivity() {
                 override fun onSuccess(t: MutableList<Note>) {
                     Log.e(TAG, "onSuccess")
                     mData = t
-                    mAdapter.notifyDataSetChanged()
+                    mAdapter=NoteListAdapter(mData)
+                    mNoteRecyclerView.adapter=mAdapter
                 }
 
                 override fun onSubscribe(d: Disposable) {

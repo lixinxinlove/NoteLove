@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <EditText
+            android:id="@+id/mTitle"
+            android:textColor="@color/common_black"
+            android:hint="请输入标题"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/def_margin_Left"
+            android:layout_marginRight="@dimen/def_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:hint="请输入内容"
+            android:gravity="top"
+            android:id="@+id/mInfo"
+            android:textColor="@color/common_black"
+            android:maxLines="20"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/def_margin_Left"
+            android:layout_marginRight="@dimen/def_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

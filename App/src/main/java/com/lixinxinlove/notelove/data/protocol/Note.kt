@@ -10,6 +10,8 @@ data class Note constructor(
     @ColumnInfo(name = "id")
     var id: Int = 0                 //id
 ) {
+    @ColumnInfo(name = "title")
+    var title: String? = null       //标题
     @ColumnInfo(name = "info")
     var info: String? = null       //文本内容
     @ColumnInfo(name = "time")
@@ -23,8 +25,6 @@ data class Note constructor(
     constructor() : this(0)
 
     override fun toString(): String {
-        return "Note(id=$id, info=$info, time=$time, theme=$theme, editTime=$editTime)"
+        return "Note(id=$id, title=$title, info=$info, time=$time, theme=$theme, editTime=$editTime)"
     }
-
-
 }
