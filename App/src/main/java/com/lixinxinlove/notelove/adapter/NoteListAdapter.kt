@@ -11,5 +11,7 @@ import com.lixinxinlove.notelove.data.protocol.Note
 class NoteListAdapter(data: MutableList<Note>?) :
     BaseQuickAdapter<Note, BaseViewHolder>(R.layout.item_note_list, data) {
     override fun convert(helper: BaseViewHolder?, item: Note?) {
+        helper!!.setText(R.id.tv_info, item!!.info)
+        helper!!.setText(R.id.tv_time, item!!.time.toString())
     }
 }

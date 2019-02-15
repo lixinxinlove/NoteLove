@@ -34,6 +34,12 @@ class NoteListActivity : BaseActivity() {
     }
 
     override fun listener() {
+        mNoteSwipeRefreshLayout.setColorSchemeResources(R.color.common_blue_light)
+        mNoteSwipeRefreshLayout.setOnRefreshListener {
+            getNotes()
+        }
+
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
@@ -68,16 +74,20 @@ class NoteListActivity : BaseActivity() {
 
 
     fun getNotes() {
+        mNoteSwipeRefreshLayout.isRefreshing = true
         NoteDataBaseHelper.getInstance(mContext).appDataBase.noteDao().getNotes()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<MutableList<Note>> {
                 override fun onSuccess(t: MutableList<Note>) {
                     Log.e(TAG, "onSuccess")
+                    mData = t
+                    mAdapter.notifyDataSetChanged()
                 }
 
                 override fun onSubscribe(d: Disposable) {
                     Log.e(TAG, "onSubscribe")
+                    mNoteSwipeRefreshLayout.isRefreshing = false
                 }
 
                 override fun onError(e: Throwable) {
