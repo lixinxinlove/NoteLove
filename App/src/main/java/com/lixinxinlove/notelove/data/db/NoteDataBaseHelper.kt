@@ -9,7 +9,7 @@ import androidx.room.Room
  */
 class NoteDataBaseHelper constructor(context: Context) {
 
-    val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "db_room").build()!!
+    val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "db_note").build()!!
 
     companion object {
         @Volatile

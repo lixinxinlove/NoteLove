@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -33,4 +35,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
     implementation project(':BaseLibrary')
+
+    kapt "androidx.room:room-compiler:${roomVersion}"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
 }
