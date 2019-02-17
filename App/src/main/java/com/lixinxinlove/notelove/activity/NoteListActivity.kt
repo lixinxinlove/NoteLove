@@ -64,7 +64,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when (view!!.id) {
             R.id.tvDelete -> {
-                onDelete(mAdapter!!.getItem(position),position)
+                onDelete(mAdapter!!.getItem(position), position)
             }
         }
     }
@@ -87,7 +87,14 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                return true
+            }
+
+            R.id.action_login -> {
+                startActivity(Intent(mContext,LoginActivity::class.java))
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -105,7 +112,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
                 override fun onSuccess(t: MutableList<Note>) {
                     Log.e(TAG, "onSuccess")
                     //mAdapter!!.data.addAll(t)
-                     mAdapter!!.setNewData(t)
+                    mAdapter!!.setNewData(t)
                 }
 
                 override fun onSubscribe(d: Disposable) {
