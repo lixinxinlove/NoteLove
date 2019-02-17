@@ -104,8 +104,8 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
             .subscribe(object : SingleObserver<MutableList<Note>> {
                 override fun onSuccess(t: MutableList<Note>) {
                     Log.e(TAG, "onSuccess")
-                    mAdapter!!.data.addAll(t)
-                    // mAdapter!!.setNewData(t)
+                    //mAdapter!!.data.addAll(t)
+                     mAdapter!!.setNewData(t)
                 }
 
                 override fun onSubscribe(d: Disposable) {
