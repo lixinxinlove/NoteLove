@@ -16,7 +16,7 @@ interface NoteApi {
     @Headers("contentType: application/x-www-form-urlencoded")
     @POST("user/login")
     // fun login(@Body req: LoginReq):Observable<BaseResp<User>>
-    fun login(@Field("telphone") telphone: String, @Field("password") password: String): Observable<BaseResp<User>>
+    fun login(@Field("phone") phone: String, @Field("password") password: String): Observable<BaseResp<User>>
 
 
     @Headers("contentType: application/x-www-form-urlencoded")
