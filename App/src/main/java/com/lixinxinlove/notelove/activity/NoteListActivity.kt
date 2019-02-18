@@ -91,7 +91,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
                 return true
             }
 
-            R.id.action_login -> {
+            R.id.action_sign_in -> {    //登录
                 startActivity(Intent(mContext,LoginActivity::class.java))
                 return true
             }

@@ -7,7 +7,7 @@
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
-    <item android:id="@+id/action_login"
+    <item android:id="@+id/action_sign_in"
           android:title="@string/action_login"
           android:orderInCategory="100"
           app:showAsAction="never"/>
