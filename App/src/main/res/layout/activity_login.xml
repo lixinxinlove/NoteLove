@@ -44,7 +44,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
             android:text="@string/sing_in"
             android:id="@+id/btnSingIn"
             android:layout_marginTop="15dp"

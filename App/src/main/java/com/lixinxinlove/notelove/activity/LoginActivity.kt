@@ -30,6 +30,7 @@ class LoginActivity : BaseActivity() {
     override fun listener() {
         btnSingIn.setOnClickListener {
             //登录
+            singIn(etPhone.text.toString().trim(), etPassword.text.toString().trim())
         }
     }
 
@@ -41,6 +42,7 @@ class LoginActivity : BaseActivity() {
 
     @SuppressLint("CheckResult")
     fun singIn(phone: String, password: String) {
+        mProgressLoading.showLoading()
         RetrofitFactory.instance.create(NoteApi::class.java).login(phone, password).convert()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
