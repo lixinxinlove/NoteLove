@@ -20,8 +20,6 @@ data class User constructor(
     @ColumnInfo(name = "phone")
     var phone: String? = null
 
-    @ColumnInfo(name = "password")
-    var password: String? = null
 
     @ColumnInfo(name = "token")
     var token: String? = null
@@ -30,7 +28,7 @@ data class User constructor(
     constructor() : this(0)
 
     override fun toString(): String {
-        return "User(id=$id, name=$name, phone=$phone, password=$password, token=$token)"
+        return "User(id=$id, name=$name, phone=$phone, token=$token)"
     }
 
 }
