@@ -8,9 +8,13 @@ import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.data.api.NoteApi
+import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.notelove.service.UserService
 import com.lixinxinlove.notelove.service.impl.UserServiceImpl
+import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
+
+import io.reactivex.functions.Function
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
@@ -44,6 +48,12 @@ class LoginActivity : BaseActivity() {
     fun singIn(phone: String, password: String) {
         mProgressLoading.showLoading()
         RetrofitFactory.instance.create(NoteApi::class.java).login(phone, password).convert()
+            .map(object : Function<User, User> {
+                override fun apply(t: User): User {
+                    NoteDataBaseHelper.getInstance(applicationContext).appDataBase.userDao().insert(t)
+                    return t
+                }
+            })
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
