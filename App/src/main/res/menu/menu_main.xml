@@ -4,11 +4,13 @@
       tools:context="com.lixinxinlove.notelove.activity.NoteListActivity">
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
+          android:icon="@mipmap/ic_launcher_round"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
     <item android:id="@+id/action_sign_in"
           android:title="@string/action_login"
           android:orderInCategory="100"
-          app:showAsAction="never"/>
+          app:showAsAction="never"
+    />
 </menu>

@@ -1,5 +1,6 @@
 package com.lixinxinlove.notelove.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +8,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.data.protocol.Note
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
@@ -21,6 +22,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_note_list.*
 import kotlinx.android.synthetic.main.content_main.*
+
 
 /**
  * note 列表
@@ -37,11 +39,11 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
     private var mData: MutableList<Note>? = null
 
     override fun layoutId(): Int {
-        return R.layout.activity_note_list
+        return com.lixinxinlove.notelove.R.layout.activity_note_list
     }
 
     override fun listener() {
-        mNoteSwipeRefreshLayout.setColorSchemeResources(R.color.common_blue_light)
+        mNoteSwipeRefreshLayout.setColorSchemeResources(com.lixinxinlove.notelove.R.color.common_blue_light)
         mNoteSwipeRefreshLayout.setOnRefreshListener(this)
 
         fab.setOnClickListener { view ->
@@ -63,7 +65,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when (view!!.id) {
-            R.id.tvDelete -> {
+            com.lixinxinlove.notelove.R.id.tvDelete -> {
                 onDelete(mAdapter!!.getItem(position), position)
             }
         }
@@ -81,23 +83,47 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> {
+            com.lixinxinlove.notelove.R.id.action_settings -> {
                 return true
             }
 
-            R.id.action_sign_in -> {    //登录
+            com.lixinxinlove.notelove.R.id.action_sign_in -> {    //登录
                 startActivity(Intent(mContext,LoginActivity::class.java))
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+    @SuppressLint("RestrictedApi")
+    override fun onPrepareOptionsPanel(view: View?, menu: Menu): Boolean {
+        if (menu != null) {
+            if (menu.javaClass == MenuBuilder::class.java) {
+                try {
+                    val m = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                    m.isAccessible = true
+                    m.invoke(menu, true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+
+            }
+        }
+        return super.onPrepareOptionsPanel(view, menu)
+    }
+
+   // onPreparePanel
+
+
+
+
 
     override fun onRefresh() {
         getNotes()
