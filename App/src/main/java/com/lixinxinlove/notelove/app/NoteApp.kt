@@ -1,6 +1,7 @@
 package com.lixinxinlove.notelove.app
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
@@ -17,10 +18,12 @@ class NoteApp : Application() {
     companion object {
         var isLogin = false
         var user: User? = null
+        lateinit var mContext: Context
     }
 
     override fun onCreate() {
         super.onCreate()
+        mContext = applicationContext
         getUser()
     }
 

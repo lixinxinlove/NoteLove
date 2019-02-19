@@ -15,6 +15,7 @@ import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.protocol.Note
+import com.lixinxinlove.notelove.server.NoteSyncService
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -54,13 +55,15 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
+
+        startService(Intent(mContext, NoteSyncService::class.java))
+
         mData = mutableListOf()
         mAdapter = NoteListAdapter(mData)
         mAdapter!!.setOnItemChildClickListener(this)
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
         getNotes()
-
         initData()
     }
 
@@ -94,7 +97,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
         menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
         if (NoteApp.isLogin) {
             menu.getItem(1).title = "退出登录"
-        }else{
+        } else {
             menu.getItem(1).title = "没有登录"
         }
         return true

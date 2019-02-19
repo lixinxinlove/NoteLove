@@ -21,7 +21,7 @@ data class Note constructor(
     @ColumnInfo(name = "editTime")
     var editTime: Long = 0          //编辑时间
     @ColumnInfo(name = "status")
-    var status: Int? = 0             //页面主题
+    var status: Int? = 0             //状态
 
     // 必须有公共构造方法
     constructor() : this(0)
