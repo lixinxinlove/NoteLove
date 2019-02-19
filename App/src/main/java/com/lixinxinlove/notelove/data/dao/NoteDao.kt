@@ -13,6 +13,9 @@ interface NoteDao {
     @Query("SELECT * FROM note")
     fun getNotes(): Single<MutableList<Note>>
 
+    @Query("SELECT * FROM note where status=:status")
+    fun getNotesByStatus(status: Int): Single<MutableList<Note>>
+
     @Query("SELECT * FROM note WHERE id = :id")
     fun getNote(id: Int): Single<Note>
 
