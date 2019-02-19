@@ -10,7 +10,7 @@ import retrofit2.http.*
  */
 interface NoteApi {
     /*
-            用户登录
+          用户登录
          */
     @FormUrlEncoded
     @Headers("contentType: application/x-www-form-urlencoded")
@@ -24,9 +24,9 @@ interface NoteApi {
     fun addressList(@Query(value = "userId") userId: Int): Observable<BaseResp<List<User>>>
 
 
-    // @FormUrlEncoded
-    @Headers("contentType: application/x-www-form-urlencoded","contentType:application/json")
-    @POST("address/add")
-    fun add(@Body userAddress: User): Observable<BaseResp<Int>>
+    @FormUrlEncoded
+    @Headers("contentType:application/json,application/x-www-form-urlencoded")
+    @POST("note/save")
+    fun save(@Field("notes") notes: String, @Field("userId") userId: Int): Observable<BaseResp<Int>>
 
 }

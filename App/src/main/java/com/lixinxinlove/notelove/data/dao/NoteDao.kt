@@ -29,7 +29,7 @@ interface NoteDao {
     fun updateNote(note: Note)
 
     @Update
-    fun updateNoteList(notes: List<Note>)
+    fun updateNoteList(notes: List<Note>): Single<Int>
 
     @Delete
     fun deleteNote(note: Note): Single<Int>
