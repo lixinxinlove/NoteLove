@@ -1,6 +1,5 @@
 package com.lixinxinlove.notelove.activity
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
+import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.protocol.Note
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.SingleObserver
@@ -60,6 +60,14 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
         getNotes()
+
+        initData()
+    }
+
+    private fun initData() {
+        if (NoteApp.isLogin) {
+
+        }
     }
 
 
@@ -84,6 +92,11 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
+        if (NoteApp.isLogin) {
+            menu.getItem(1).title = "退出登录"
+        }else{
+            menu.getItem(1).title = "没有登录"
+        }
         return true
     }
 
@@ -94,16 +107,16 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
             }
 
             com.lixinxinlove.notelove.R.id.action_sign_in -> {    //登录
-                startActivity(Intent(mContext,LoginActivity::class.java))
+                startActivity(Intent(mContext, LoginActivity::class.java))
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    //菜单显示前面的小图标
+    override fun onPreparePanel(featureId: Int, view: View?, menu: Menu): Boolean {
 
-    @SuppressLint("RestrictedApi")
-    override fun onPrepareOptionsPanel(view: View?, menu: Menu): Boolean {
         if (menu != null) {
             if (menu.javaClass == MenuBuilder::class.java) {
                 try {
@@ -113,16 +126,10 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
-
             }
         }
-        return super.onPrepareOptionsPanel(view, menu)
+        return super.onPreparePanel(featureId, view, menu)
     }
-
-   // onPreparePanel
-
-
-
 
 
     override fun onRefresh() {

@@ -8,7 +8,7 @@ import io.reactivex.Single
 interface UserDao {
 
     @Query("SELECT * FROM user")
-    fun getUsers(): Single<MutableList<User>>
+    fun getUsers(): Single<List<User>>
 
     @Query("SELECT * FROM user WHERE id = :id")
     fun getUser(id: Int): Single<User>
@@ -17,7 +17,7 @@ interface UserDao {
     fun insertAll(users: List<User>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User): Single<Long>
+    fun insert(user: User)
 
     @Delete
     fun deleteUser(user: User): Single<Int>

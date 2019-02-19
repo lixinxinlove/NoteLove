@@ -7,13 +7,13 @@ import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
+import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.api.NoteApi
 import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.notelove.service.UserService
 import com.lixinxinlove.notelove.service.impl.UserServiceImpl
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
-
 import io.reactivex.functions.Function
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -51,6 +51,7 @@ class LoginActivity : BaseActivity() {
             .map(object : Function<User, User> {
                 override fun apply(t: User): User {
                     NoteDataBaseHelper.getInstance(applicationContext).appDataBase.userDao().insert(t)
+                    Log.e("singIn", "保存数据")
                     return t
                 }
             })
@@ -61,6 +62,8 @@ class LoginActivity : BaseActivity() {
                     val userInfo = it
                     Log.e("登录成功", userInfo.toString())
                     Log.e("Single", "onSuccess")
+                    NoteApp.isLogin = true
+                    NoteApp.user = userInfo
                     finish()
                 },
                 onError = {
