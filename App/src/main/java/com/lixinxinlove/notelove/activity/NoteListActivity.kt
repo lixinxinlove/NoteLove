@@ -7,11 +7,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
@@ -29,16 +29,20 @@ import kotlinx.android.synthetic.main.content_main.*
 /**
  * note 列表
  */
-class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
+class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListener,
     BaseQuickAdapter.OnItemChildClickListener {
 
 
     private val TAG = "NoteListActivity"
+
     private val REQUEST_EDIT_CODE = 100
 
     private var mAdapter: NoteListAdapter? = null
 
     private var mData: MutableList<Note>? = null
+
+    private lateinit var mMenu: Menu
+
 
     override fun layoutId(): Int {
         return com.lixinxinlove.notelove.R.layout.activity_note_list
@@ -68,9 +72,15 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
         initData()
     }
 
+    override fun loginAction() {
+        Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show()
+    }
+
     private fun initData() {
         if (NoteApp.isLogin) {
-
+            mMenu.getItem(1).title = "退出登录"
+        } else {
+            mMenu.getItem(1).title = "没有登录"
         }
     }
 
@@ -97,9 +107,9 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
+        mMenu = menu
         if (NoteApp.isLogin) {
             menu.getItem(1).title = "退出登录"
         } else {
@@ -115,7 +125,11 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
             }
 
             com.lixinxinlove.notelove.R.id.action_sign_in -> {    //登录
-                startActivity(Intent(mContext, LoginActivity::class.java))
+                if (NoteApp.isLogin) {
+                    startActivity(Intent(mContext, MyselfActivity::class.java))
+                } else {
+                    startActivity(Intent(mContext, LoginActivity::class.java))
+                }
                 return true
             }
             else -> super.onOptionsItemSelected(item)

@@ -22,33 +22,29 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.MyselfActivity">
+        </activity>
 
         <service
                 android:name=".server.NoteSyncService"
                 android:enabled="true"
                 android:exported="true">
-        </service>
-
-        <!--登录-->
+        </service> <!-- 登录 -->
         <activity android:name=".activity.LoginActivity">
-        </activity>
-        <!--编辑-->
+        </activity> <!-- 编辑 -->
         <activity android:name=".activity.EditActivity">
         </activity>
 
         <meta-data
                 android:name="android.max_aspect"
-                android:value="2.1"/>
-
-        <!--欢迎页-->
+                android:value="2.1"/> <!-- 欢迎页 -->
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <!--列表页-->
+        </activity> <!-- 列表页 -->
         <activity
                 android:name=".activity.NoteListActivity"
                 android:label="@string/app_name"

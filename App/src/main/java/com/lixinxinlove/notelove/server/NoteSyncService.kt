@@ -23,7 +23,6 @@ import io.reactivex.schedulers.Schedulers
  */
 class NoteSyncService : Service() {
 
-
     val TAG = "NoteSyncService"
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -78,7 +77,6 @@ class NoteSyncService : Service() {
             })
 
 
-
         NoteDataBaseHelper.getInstance(NoteApp.mContext).appDataBase.noteDao()
             .getNotesByStatus(2)
             .subscribeOn(Schedulers.io())
@@ -101,8 +99,6 @@ class NoteSyncService : Service() {
                     Log.e("NoteSyncService", "onError")
                 }
             })
-
-
     }
 
     @SuppressLint("CheckResult")
@@ -167,8 +163,5 @@ class NoteSyncService : Service() {
                     Log.e(TAG, "修改本地失败")
                 }
             }
-
     }
-
-
 }

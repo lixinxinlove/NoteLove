@@ -1,13 +1,16 @@
 package com.lixinxinlove.notelove.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.app.NoteApp
+import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
 import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.notelove.service.UserService
@@ -66,6 +69,9 @@ class LoginActivity : BaseActivity() {
                     Log.e("Single", "onSuccess")
                     NoteApp.isLogin = true
                     NoteApp.user = userInfo
+                    var intent = Intent()
+                    intent.action = NoteConfig.LOGIN_ACTION
+                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent)
                     finish()
                 },
                 onError = {
