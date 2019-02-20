@@ -75,7 +75,6 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                     note.status=0
                     onSave(note)
                 }
-
             }
         }
     }
@@ -101,7 +100,6 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                 }
             })
     }
-
 
     private fun onSave(note: Note) {
         NoteDataBaseHelper.getInstance(mContext).appDataBase.noteDao().insert(note)
