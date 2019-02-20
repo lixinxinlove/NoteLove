@@ -69,20 +69,13 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
         getNotes()
-        initData()
     }
 
     override fun loginAction() {
         Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show()
     }
 
-    private fun initData() {
-        if (NoteApp.isLogin) {
-            mMenu.getItem(1).title = "退出登录"
-        } else {
-            mMenu.getItem(1).title = "没有登录"
-        }
-    }
+
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when (view!!.id) {
