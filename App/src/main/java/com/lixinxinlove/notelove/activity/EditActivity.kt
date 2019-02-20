@@ -31,8 +31,8 @@ class EditActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun listener() {
-
         tvSave.setOnClickListener(this)
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

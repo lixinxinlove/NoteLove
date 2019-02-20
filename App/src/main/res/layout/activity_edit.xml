@@ -7,6 +7,8 @@
         android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
+            android:titleTextColor="@color/common_white"
+            app:navigationIcon="@mipmap/left"
             app:titleTextColor="@color/common_white"
             app:title="新建便签"
             android:id="@+id/toolbar"

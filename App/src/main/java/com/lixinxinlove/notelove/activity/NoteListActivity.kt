@@ -76,7 +76,7 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when (view!!.id) {
-            com.lixinxinlove.notelove.R.id.tvDelete -> {
+            com.lixinxinlove.notelove.R.id.llDelete -> {
                 onDelete(mAdapter!!.getItem(position), position)
             }
         }

@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
     <LinearLayout style="@style/MatchWrap.Vertical">
 
         <TextView
@@ -41,17 +42,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
-
     </LinearLayout>
 
-    <TextView
-            android:id="@+id/tvDelete"
-            android:text="删除"
-            android:layout_width="80dp"
-            android:gravity="center"
+    <LinearLayout
+            android:id="@+id/llDelete"
             android:background="@color/common_blue_dark"
-            android:layout_height="match_parent"/>
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="90dp"
+            android:layout_height="match_parent">
 
+
+        <ImageView
+                android:src="@mipmap/delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+        <TextView
+                android:layout_marginTop="2dp"
+                android:textSize="12sp"
+                android:textColor="@color/common_white"
+                android:text="删除"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
 

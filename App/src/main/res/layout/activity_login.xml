@@ -9,7 +9,8 @@
 
 
     <Toolbar
-            android:navigationIcon="@mipmap/ic_launcher"
+            android:titleTextColor="@color/common_white"
+            android:navigationIcon="@mipmap/left"
             android:title="登录"
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/common_white"

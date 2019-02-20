@@ -36,6 +36,8 @@ class LoginActivity : BaseActivity() {
             //登录
             singIn(etPhone.text.toString().trim(), etPassword.text.toString().trim())
         }
+
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

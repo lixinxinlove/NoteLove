@@ -14,6 +14,6 @@ class NoteListAdapter(data: MutableList<Note>?) :
     override fun convert(helper: BaseViewHolder?, item: Note?) {
         helper!!.setText(R.id.tv_info, item!!.info)
         helper!!.setText(R.id.tv_time, DateTimeUtils.timeForDate(item!!.time, DateTimeUtils.yyyy_MM_dd_HH_mm_ss))
-        helper!!.addOnClickListener(R.id.tvDelete)
+        helper!!.addOnClickListener(R.id.llDelete)
     }
 }
