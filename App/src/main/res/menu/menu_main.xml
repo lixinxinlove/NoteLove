@@ -8,9 +8,11 @@
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
-    <item android:id="@+id/action_sign_in"
-          android:title="@string/action_login"
-          android:orderInCategory="100"
-          app:showAsAction="never"
+    <item
+            android:icon="@mipmap/user"
+            android:id="@+id/action_sign_in"
+            android:title="@string/action_login"
+            android:orderInCategory="100"
+            app:showAsAction="always"
     />
 </menu>
