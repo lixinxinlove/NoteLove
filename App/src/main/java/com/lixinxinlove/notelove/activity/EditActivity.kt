@@ -5,7 +5,6 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.data.protocol.Note
@@ -13,7 +12,6 @@ import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.content_edit.*
@@ -57,15 +55,23 @@ class EditActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.tvSave -> {
-                Toast.makeText(mContext, "保存", Toast.LENGTH_SHORT).show()
-                note.time = System.currentTimeMillis()
-                note.title = mTitle.text.toString()
-                note.info = mInfo.text.toString()
-                note.editTime = System.currentTimeMillis()
-                note.theme = 0
                 if (isEdit) {
+                    note.title = mTitle.text.toString()
+                    note.info = mInfo.text.toString()
+                    note.editTime = System.currentTimeMillis()
+                    note.theme = 0
+                    if (note.status == 0) {
+                        note.status = 0
+                    } else {
+                        note.status = 2
+                    }
                     onUpdate(note)
                 } else {
+                    note.time = System.currentTimeMillis()
+                    note.title = mTitle.text.toString()
+                    note.info = mInfo.text.toString()
+                    note.editTime = System.currentTimeMillis()
+                    note.theme = 0
                     onSave(note)
                 }
 
@@ -75,17 +81,24 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
     @SuppressLint("CheckResult")
     private fun onUpdate(note: Note) {
-        note.status = 2
         NoteDataBaseHelper.getInstance(mContext).appDataBase.noteDao().updateNote(note)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                if (it > 0) {
+            .subscribe(object : SingleObserver<Int> {
+                override fun onSuccess(t: Int) {
                     Log.e(TAG, "onSuccess")
                     setResult(Activity.RESULT_OK)
                     finish()
                 }
-            }
+
+                override fun onSubscribe(d: Disposable) {
+                    Log.e(TAG, "onSubscribe")
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e(TAG, "onError")
+                }
+            })
     }
 
 
