@@ -72,6 +72,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                     note.info = mInfo.text.toString()
                     note.editTime = System.currentTimeMillis()
                     note.theme = 0
+                    note.status=0
                     onSave(note)
                 }
 
@@ -103,7 +104,6 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
 
     private fun onSave(note: Note) {
-
         NoteDataBaseHelper.getInstance(mContext).appDataBase.noteDao().insert(note)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

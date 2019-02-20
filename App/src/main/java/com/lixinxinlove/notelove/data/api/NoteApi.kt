@@ -29,4 +29,10 @@ interface NoteApi {
     @POST("note/save")
     fun save(@Field("notes") notes: String, @Field("userId") userId: Int): Observable<BaseResp<Int>>
 
+
+    @FormUrlEncoded
+    @Headers("contentType:application/json,application/x-www-form-urlencoded")
+    @POST("note/update")
+    fun update(@Field("notes") notes: String, @Field("userId") userId: Int): Observable<BaseResp<Int>>
+
 }

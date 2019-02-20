@@ -76,6 +76,33 @@ class NoteSyncService : Service() {
                     Log.e("NoteSyncService", "onError")
                 }
             })
+
+
+
+        NoteDataBaseHelper.getInstance(NoteApp.mContext).appDataBase.noteDao()
+            .getNotesByStatus(2)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<List<Note>> {
+                override fun onSuccess(t: List<Note>) {
+                    if (t.isNotEmpty()) {
+                        Log.e("NoteSyncService", t.size.toString())
+                        updateServiceAll(t)
+                    } else {
+                        Log.e("NoteSyncService", "没有数据")
+                    }
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                    Log.e("NoteSyncService", "onSubscribe")
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("NoteSyncService", "onError")
+                }
+            })
+
+
     }
 
     @SuppressLint("CheckResult")
@@ -100,6 +127,30 @@ class NoteSyncService : Service() {
                 }
             )
     }
+
+
+    @SuppressLint("CheckResult")
+    fun updateServiceAll(notes: List<Note>) {
+        Log.e(TAG, "开始同步修改的数据。。。。。")
+        val gson = Gson()
+        val data = gson.toJson(notes)
+        RetrofitFactory.instance.create(NoteApi::class.java).update(data, NoteApp.user!!.id).convert()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    Log.e(TAG, "同步成功。。。。。")
+                    updateAll(notes)
+                },
+                onError = {
+                    Log.e("网络异常", "onError")
+                },
+                onComplete = {
+                    Log.e(TAG, "onComplete。。。。。")
+                }
+            )
+    }
+
 
     @SuppressLint("CheckResult")
     private fun updateAll(notes: List<Note>) {
