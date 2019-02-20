@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lixinxinlove.base.activity.BaseActivity
+import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.protocol.Note
@@ -73,15 +74,19 @@ class NoteListActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener,
         }
     }
 
-
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when (view!!.id) {
-            com.lixinxinlove.notelove.R.id.llDelete -> {
+            R.id.llDelete -> {
                 onDelete(mAdapter!!.getItem(position), position)
+            }
+            R.id.llItem -> {
+                var intent = Intent(mContext, EditActivity::class.java)
+                intent.putExtra("is_edit", true)
+                intent.putExtra("note", mAdapter!!.data[position])
+                startActivityForResult(intent, REQUEST_EDIT_CODE)
             }
         }
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

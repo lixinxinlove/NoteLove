@@ -26,7 +26,7 @@ interface NoteDao {
     fun insert(note: Note): Single<Long>
 
     @Update
-    fun updateNote(note: Note)
+    fun updateNote(note: Note): Single<Int>
 
     @Update
     fun updateNoteList(notes: List<Note>): Single<Int>

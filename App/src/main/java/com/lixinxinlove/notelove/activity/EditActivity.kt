@@ -1,5 +1,6 @@
 package com.lixinxinlove.notelove.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.content_edit.*
@@ -23,6 +25,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
     private val TAG = "EditActivity"
 
+    private var isEdit = false
 
     private var note = Note(0)
 
@@ -37,6 +40,18 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initData()
+    }
+
+    private fun initData() {
+        isEdit = intent.getBooleanExtra("is_edit", false)
+        if (!isEdit) {
+            return
+        }
+        note = intent.getParcelableExtra("note")
+        mTitle.setText(note.title)
+        mInfo.setText(note.info)
+
     }
 
     override fun onClick(v: View?) {
@@ -48,10 +63,29 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                 note.info = mInfo.text.toString()
                 note.editTime = System.currentTimeMillis()
                 note.theme = 0
+                if (isEdit) {
+                    onUpdate(note)
+                } else {
+                    onSave(note)
+                }
 
-                onSave(note)
             }
         }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun onUpdate(note: Note) {
+        note.status = 2
+        NoteDataBaseHelper.getInstance(mContext).appDataBase.noteDao().updateNote(note)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy {
+                if (it > 0) {
+                    Log.e(TAG, "onSuccess")
+                    setResult(Activity.RESULT_OK)
+                    finish()
+                }
+            }
     }
 
 

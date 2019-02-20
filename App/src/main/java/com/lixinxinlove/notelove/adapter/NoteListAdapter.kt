@@ -15,5 +15,6 @@ class NoteListAdapter(data: MutableList<Note>?) :
         helper!!.setText(R.id.tv_info, item!!.info)
         helper!!.setText(R.id.tv_time, DateTimeUtils.timeForDate(item!!.time, DateTimeUtils.yyyy_MM_dd_HH_mm_ss))
         helper!!.addOnClickListener(R.id.llDelete)
+        helper!!.addOnClickListener(R.id.llItem)
     }
 }
