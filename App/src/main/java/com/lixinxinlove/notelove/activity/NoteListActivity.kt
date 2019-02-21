@@ -32,7 +32,6 @@ import kotlinx.android.synthetic.main.content_main.*
 class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListener,
     BaseQuickAdapter.OnItemChildClickListener {
 
-
     private val TAG = "NoteListActivity"
 
     private val REQUEST_EDIT_CODE = 100
@@ -41,8 +40,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
 
     private var mData: MutableList<Note>? = null
 
-    private lateinit var mMenu: Menu
-
+    private var mNoDataView: View? = null
 
     override fun layoutId(): Int {
         return com.lixinxinlove.notelove.R.layout.activity_note_list
@@ -60,11 +58,12 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-
+        mNoDataView=View.inflate(mContext,R.layout.view_no_data,null)
         startService(Intent(mContext, NoteSyncService::class.java))
 
         mData = mutableListOf()
         mAdapter = NoteListAdapter(mData)
+        mAdapter!!.emptyView=mNoDataView
         mAdapter!!.setOnItemChildClickListener(this)
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
@@ -74,7 +73,6 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun loginAction() {
         Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show()
     }
-
 
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
@@ -102,12 +100,6 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
-        mMenu = menu
-        if (NoteApp.isLogin) {
-            menu.getItem(1).title = "退出登录"
-        } else {
-            menu.getItem(1).title = "没有登录"
-        }
         return true
     }
 

@@ -4,7 +4,7 @@
       tools:context="com.lixinxinlove.notelove.activity.NoteListActivity">
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
-          android:icon="@mipmap/ic_launcher_round"
+          android:icon="@mipmap/shezhi"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
