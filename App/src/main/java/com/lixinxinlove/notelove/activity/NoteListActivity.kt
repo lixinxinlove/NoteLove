@@ -55,15 +55,14 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        mNoDataView=View.inflate(mContext,R.layout.view_no_data,null)
-        startService(Intent(mContext, NoteSyncService::class.java))
-
+        mNoDataView = View.inflate(mContext, R.layout.view_no_data, null)
         mData = mutableListOf()
         mAdapter = NoteListAdapter(mData)
-        mAdapter!!.emptyView=mNoDataView
+        mAdapter!!.emptyView = mNoDataView
         mAdapter!!.setOnItemChildClickListener(this)
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
@@ -92,6 +91,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
+            startService(Intent(mContext, NoteSyncService::class.java))
             if (requestCode == REQUEST_EDIT_CODE) {
                 onRefresh()
             }
