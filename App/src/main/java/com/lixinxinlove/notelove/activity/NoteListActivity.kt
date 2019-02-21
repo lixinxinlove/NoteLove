@@ -91,9 +91,10 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            startService(Intent(mContext, NoteSyncService::class.java))
+
             if (requestCode == REQUEST_EDIT_CODE) {
                 onRefresh()
+                startService(Intent(mContext, NoteSyncService::class.java))
             }
         }
     }

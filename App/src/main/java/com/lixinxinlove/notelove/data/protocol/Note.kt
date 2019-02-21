@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "note")
 data class Note constructor(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    var id: Int = 0                 //id
+    var id: Long = 0                 //id
 ) : Parcelable {
     @ColumnInfo(name = "title")
     var title: String? = null       //标题
@@ -25,7 +25,7 @@ data class Note constructor(
     @ColumnInfo(name = "status")
     var status: Int? = 0             //状态
 
-    constructor(parcel: Parcel) : this(parcel.readInt()) {
+    constructor(parcel: Parcel) : this(parcel.readLong()) {
         title = parcel.readString()
         info = parcel.readString()
         time = parcel.readLong()
@@ -42,7 +42,7 @@ data class Note constructor(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeLong(id)
         parcel.writeString(title)
         parcel.writeString(info)
         parcel.writeLong(time)

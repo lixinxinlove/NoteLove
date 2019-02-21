@@ -25,7 +25,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
     private var isEdit = false
 
-    private var note = Note(0)
+    private var note = Note(System.currentTimeMillis() / 1000)
 
     override fun layoutId(): Int {
         return R.layout.activity_edit
@@ -72,7 +72,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                     note.info = mInfo.text.toString()
                     note.editTime = System.currentTimeMillis()
                     note.theme = 0
-                    note.status=0
+                    note.status = 0
                     onSave(note)
                 }
             }

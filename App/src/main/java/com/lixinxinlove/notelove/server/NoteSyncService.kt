@@ -36,6 +36,7 @@ class NoteSyncService : Service() {
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.e("NoteSyncService", "onStartCommand")
         getNotes()
         return super.onStartCommand(intent, flags, startId)
     }
