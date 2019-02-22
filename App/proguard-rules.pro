@@ -19,3 +19,125 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+-dontwarn
+-dontoptimize
+-dontpreverify
+
+
+
+# use Annotation
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+
+#native
+-keepclasseswithmembernames class *{
+	native <methods>;
+}
+
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+
+# Keep the support library
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+
+
+# 抑制警告
+#-ignorewarnings
+
+#Gson
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+    public <fields>;
+}
+-keepattributes Signature
+-keep class sun.misc.Unsafe { *; }
+-dontwarn com.google.gson.**
+
+
+# support-v7-appcompat
+-keep public class android.support.v7.widget.** { *; }
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+# support-design
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
+# support-design end
+
+
+-keep class com.eventmosh.evente.entity.**{*;}
+
+
+-keep public class * extends android.app.Activity                       # 保持哪些类不被混淆
+-keep public class * extends android.app.Application                    # 保持哪些类不被混淆
+-keep public class * extends android.app.Service                        # 保持哪些类不被混淆
+-keep public class * extends android.content.BroadcastReceiver          # 保持哪些类不被混淆
+-keep public class * extends android.content.ContentProvider            # 保持哪些类不被混淆
+-keep public class * extends android.app.backup.BackupAgentHelper       # 保持哪些类不被混淆
+-keep public class * extends android.preference.Preference              # 保持哪些类不被混淆
+-keep public class com.android.vending.licensing.ILicensingService      # 保持哪些类不被混淆
+
+
+#=========================保持内部类不被混淆==============================
+#-keepclassmembers class com.eventmosh.evente.activity.EventSelectCourierCompanyActivity$Company {
+#   public *;
+#}
+
+
+
+
+#=====================================================
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+-keep class org.xmlpull.v1.**{*; }
+-dontwarn org.xmlpull.v1.**
+-keep public class * extends org.xmlpull.v1.XmlPullParser
+-keep public class * extends org.xmlpull.v1.XmlSerializer
+#Warning:library class android.content.Intent depends on program class org.xmlpull.v1.XmlPullParser
+#Warning:library class android.content.IntentFilter depends on program class org.xmlpull.v1.XmlSerializer
+
+-keep class com.gprinter.**{*;}
+-keep class taobe.tec.jcc.**{*;}
+-keep class org.**{*;}
+
+#===========================BaseRecyclerViewAdapterHelper=================================
+-keep class com.chad.library.adapter.** {
+*;
+}
+-keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
+-keep public class * extends com.chad.library.adapter.base.BaseViewHolder
+-keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
+     <init>(...);
+}
+
+
+#==========================================glide=================================================
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+# for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
