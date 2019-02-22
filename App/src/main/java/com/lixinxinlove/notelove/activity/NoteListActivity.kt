@@ -16,6 +16,7 @@ import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.protocol.Note
+import com.lixinxinlove.notelove.dialog.ListDialog
 import com.lixinxinlove.notelove.server.NoteSyncService
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.SingleObserver
@@ -107,6 +108,8 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             com.lixinxinlove.notelove.R.id.action_settings -> {
+                val listDialog = ListDialog(mContext)
+                listDialog.show()
                 return true
             }
 
