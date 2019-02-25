@@ -9,9 +9,9 @@
         android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-            android:titleTextColor="@color/common_white"
+            android:titleTextColor="@color/colorPrimary"
             app:navigationIcon="@mipmap/left"
-            app:titleTextColor="@color/common_white"
+            app:titleTextColor="@color/colorPrimary"
             app:title="新建便签"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:gravity="center"
                 android:text="完成"
                 android:textSize="16sp"
-                android:textColor="@color/common_white"
+                android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
 

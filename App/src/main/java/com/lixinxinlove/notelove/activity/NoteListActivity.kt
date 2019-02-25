@@ -109,7 +109,8 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         return when (item.itemId) {
             com.lixinxinlove.notelove.R.id.action_settings -> {
                 val listDialog = ListDialog(mContext)
-                listDialog.show()
+                //listDialog.show()
+                Toast.makeText(mContext, "亲亲", Toast.LENGTH_LONG).show()
                 return true
             }
 

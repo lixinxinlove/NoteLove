@@ -28,6 +28,6 @@ class WelcomeActivity : BaseActivity() {
         rootView.postDelayed({
             startActivity(Intent(this, NoteListActivity::class.java))
             finish()
-        }, 2000)
+        }, 3000)
     }
 }
