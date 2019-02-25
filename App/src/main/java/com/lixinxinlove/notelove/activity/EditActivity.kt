@@ -5,6 +5,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.jaeger.library.StatusBarUtil
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.data.protocol.Note
@@ -37,6 +38,9 @@ class EditActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        StatusBarUtil.setTranslucent(this)
+        StatusBarUtil.setLightMode(this)
+
         super.onCreate(savedInstanceState)
         initData()
     }
