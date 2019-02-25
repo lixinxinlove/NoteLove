@@ -13,8 +13,6 @@ import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
 import com.lixinxinlove.notelove.data.protocol.User
-import com.lixinxinlove.notelove.service.UserService
-import com.lixinxinlove.notelove.service.impl.UserServiceImpl
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
@@ -27,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity : BaseActivity() {
 
-    private lateinit var userService: UserService
+
 
     override fun layoutId(): Int {
         return R.layout.activity_login
@@ -45,7 +43,6 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userService = UserServiceImpl()
     }
 
 
