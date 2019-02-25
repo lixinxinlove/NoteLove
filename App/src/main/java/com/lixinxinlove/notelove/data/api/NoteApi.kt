@@ -13,7 +13,7 @@ interface NoteApi {
           用户登录
          */
     @FormUrlEncoded
-    @Headers("contentType: application/x-www-form-urlencoded")
+    @Headers("contentType:application/json, application/x-www-form-urlencoded")
     @POST("user/login")
     // fun login(@Body req: LoginReq):Observable<BaseResp<User>>
     fun login(@Field("phone") phone: String, @Field("password") password: String): Observable<BaseResp<User>>

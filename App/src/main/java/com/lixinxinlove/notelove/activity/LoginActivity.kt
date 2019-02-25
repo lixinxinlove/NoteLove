@@ -8,7 +8,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
@@ -20,6 +19,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 
+
 /**
  * 登录
  */
@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_login
+        return com.lixinxinlove.notelove.R.layout.activity_login
 
     }
 
@@ -63,7 +63,7 @@ class LoginActivity : BaseActivity() {
                 onNext = {
                     val userInfo = it
                     Log.e("登录成功", userInfo.toString())
-                    Log.e("Single", "onSuccess")
+                    Log.e("subscribeBy", "onSuccess")
                     NoteApp.isLogin = true
                     NoteApp.user = userInfo
                     var intent = Intent()
@@ -73,10 +73,12 @@ class LoginActivity : BaseActivity() {
                 },
                 onError = {
                     mProgressLoading.hideLoading()
-                    Log.e("网络异常", "onError")
+                    Log.e("subscribeBy", "onError")
+                    it.printStackTrace()
                 },
                 onComplete = {
                     mProgressLoading.hideLoading()
+                    Log.e("subscribeBy", "onComplete")
                 })
     }
 
