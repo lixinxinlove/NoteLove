@@ -1,6 +1,8 @@
 package com.lixinxinlove.notelove.activity
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.lixinxinlove.base.activity.BaseActivity
@@ -14,6 +16,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_myself.*
 
 class MyselfActivity : BaseActivity() {
+
+    private lateinit var dpd: DatePickerDialog
+
     override fun layoutId(): Int {
         return R.layout.activity_myself
     }
@@ -21,13 +26,28 @@ class MyselfActivity : BaseActivity() {
     override fun listener() {
         toolbar.setNavigationOnClickListener { finish() }
         mBtnLogout.setOnClickListener {
-            logoutAlertDialog()
+            //logoutAlertDialog()
+
+            showTime()
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mTvUserName.text = NoteApp.user!!.name
+
+        dpd = DatePickerDialog(this)
+        dpd.setOnDateSetListener { view, year, month, dayOfMonth ->
+            Log.e("lee", "$year,$month,$dayOfMonth")
+        }
+    }
+
+
+    private fun showTime() {
+
+
+        dpd.show()
+
     }
 
 
