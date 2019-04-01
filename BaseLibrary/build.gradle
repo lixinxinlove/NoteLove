@@ -53,8 +53,6 @@ dependencies {
     api "androidx.room:room-runtime:${roomVersion}"
     // 配合 rxjava2 使用
     api 'android.arch.persistence.room:rxjava2:1.1.1'
-    kapt "androidx.room:room-compiler:${roomVersion}"
-    kapt 'android.arch.persistence.room:compiler:1.1.1'
     //状态栏设置
     api 'com.jaeger.statusbarutil:library:1.5.1'
     // okhttp3

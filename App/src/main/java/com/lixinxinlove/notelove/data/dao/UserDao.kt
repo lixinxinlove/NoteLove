@@ -25,5 +25,4 @@ interface UserDao {
     @Delete
     fun deleteAllUser(notes: List<User>): Single<Int>
 
-
 }
