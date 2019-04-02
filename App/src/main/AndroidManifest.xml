@@ -22,18 +22,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.MyselfActivity">
-        </activity>
+        <!--选择时间-->
+        <activity android:name=".activity.SelectTimeActivity"/>
+
+        <activity android:name=".activity.MyselfActivity"/>
+
 
         <service
                 android:name=".server.NoteSyncService"
                 android:enabled="true"
                 android:exported="true">
         </service> <!-- 登录 -->
-        <activity android:name=".activity.LoginActivity">
-        </activity> <!-- 编辑 -->
-        <activity android:name=".activity.EditActivity">
-        </activity>
+        <activity android:name=".activity.LoginActivity"/>
+        <!-- 编辑 -->
+        <activity android:name=".activity.EditActivity"/>
+
 
         <meta-data
                 android:name="android.max_aspect"
@@ -48,8 +51,8 @@
         <activity
                 android:name=".activity.NoteListActivity"
                 android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+apply plugin: 'checkstyle'
+
+task checkstyle(type: Checkstyle) {
+  configFile rootProject.file('checkstyle.xml')
+  source 'src/main/java'
+  ignoreFailures false
+  showViolations true
+  include '**/*.java'
+
+  classpath = files()
+}
+
+
+android {
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
+
+  defaultConfig {
+    minSdkVersion 21
+  }
+
+  lintOptions {
+    warning 'MissingTranslation'
+    textReport true
+    textOutput 'stdout'
+  }
+}
+
+dependencies {
+  //testCompile deps.festandroid
+ // testCompile deps.junit
+ // testCompile deps.robolectric
+ // testCompile deps.intellijannotations
+}
+
+
