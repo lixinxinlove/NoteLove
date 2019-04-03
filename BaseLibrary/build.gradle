@@ -64,7 +64,8 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
     //RecyclerView 侧滑
     api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
-
+    // 图片裁剪
+    api 'com.github.yalantis:ucrop:2.2.2'
     kapt "androidx.room:room-compiler:${roomVersion}"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
