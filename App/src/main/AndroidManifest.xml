@@ -27,6 +27,12 @@
 
         <activity android:name=".activity.MyselfActivity"/>
 
+        <!-- 图片裁剪 -->
+        <activity
+                android:name="com.yalantis.ucrop.UCropActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
 
         <service
                 android:name=".server.NoteSyncService"
