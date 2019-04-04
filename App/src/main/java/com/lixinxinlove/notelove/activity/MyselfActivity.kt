@@ -148,7 +148,7 @@ class MyselfActivity : BaseActivity() {
     }
 
 
-    fun getRealFilePathFromUri(context: Context, uri: Uri?): String? {
+    private fun getRealFilePathFromUri(context: Context, uri: Uri?): String? {
         if (null == uri)
             return null
         val scheme = uri.scheme
