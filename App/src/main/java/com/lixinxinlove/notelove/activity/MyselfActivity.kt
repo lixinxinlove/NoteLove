@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.app.NoteApp
@@ -42,6 +43,19 @@ class MyselfActivity : BaseActivity() {
 
             showTime()
         }
+
+
+        var dialogBuilder = NiftyDialogBuilder.getInstance(this)
+
+        headView.setOnClickListener {
+
+            dialogBuilder
+                .withTitle("Modal Dialog")
+                .withMessage("This is a modal Dialog.")
+                .show()
+        }
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

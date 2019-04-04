@@ -70,4 +70,7 @@ dependencies {
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
 
+
+    api 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
+
 }
