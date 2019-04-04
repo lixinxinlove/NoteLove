@@ -5,10 +5,13 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Outline
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
+import android.view.ViewOutlineProvider
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.lixinxinlove.base.activity.BaseActivity
@@ -43,12 +46,23 @@ class MyselfActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mTvUserName.text = NoteApp.user!!.name
+        //  mTvUserName.text = NoteApp.user!!.name
 
         dpd = DatePickerDialog(this)
         dpd.setOnDateSetListener { view, year, month, dayOfMonth ->
             Log.e("lee", "$year,$month,$dayOfMonth")
         }
+
+
+        val viewOutlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                view.clipToOutline = true
+                outline.setOval(0, 0, view.width, view.height)
+            }
+        }
+        headView.outlineProvider = viewOutlineProvider
+
+
     }
 
 
@@ -100,15 +114,14 @@ class MyselfActivity : BaseActivity() {
             val resultUri = UCrop.getOutput(data!!)
             val cropImagePath = getRealFilePathFromUri(applicationContext, resultUri)
             val file = File(cropImagePath)
-           // GlideUtils.loadHead(this, cropImagePath, headImage)
-          //  EventApp.api.postFile(postFileCallback, Config.uploadUrl, file)
+            // GlideUtils.loadHead(this, cropImagePath, headImage)
+            //  EventApp.api.postFile(postFileCallback, Config.uploadUrl, file)
         } else if (resultCode == UCrop.RESULT_ERROR) {
             val cropError = UCrop.getError(data!!)
-           // ToastUtils.showToast(mContext, "图片加载失败")
+            // ToastUtils.showToast(mContext, "图片加载失败")
         }
 
     }
-
 
 
     //裁剪图片
@@ -161,8 +174,6 @@ class MyselfActivity : BaseActivity() {
         }
         return data
     }
-
-
 
 
 }

@@ -14,7 +14,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
-import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.data.protocol.Note
 import com.lixinxinlove.notelove.dialog.ListDialog
 import com.lixinxinlove.notelove.server.NoteSyncService
@@ -115,11 +114,12 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
             }
 
             com.lixinxinlove.notelove.R.id.action_sign_in -> {    //登录
-                if (NoteApp.isLogin) {
-                    startActivity(Intent(mContext, MyselfActivity::class.java))
-                } else {
-                    startActivity(Intent(mContext, LoginActivity::class.java))
-                }
+                startActivity(Intent(mContext, MyselfActivity::class.java))
+//                if (NoteApp.isLogin) {
+//                    startActivity(Intent(mContext, MyselfActivity::class.java))
+//                } else {
+//                    startActivity(Intent(mContext, LoginActivity::class.java))
+//                }
                 return true
             }
             else -> super.onOptionsItemSelected(item)

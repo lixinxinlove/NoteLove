@@ -23,9 +23,21 @@
 
 
     <LinearLayout
+            android:orientation="horizontal"
             android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="120dp">
+
+
+        <ImageView
+                android:padding="2dp"
+                android:background="@color/common_red"
+                android:src="@mipmap/kongzhuangtai"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+                android:id="@+id/headView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
 
 
         <TextView
