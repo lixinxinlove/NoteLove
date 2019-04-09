@@ -45,14 +45,8 @@ class MyselfActivity : BaseActivity() {
         }
 
 
-        var dialogBuilder = NiftyDialogBuilder.getInstance(this)
-
         headView.setOnClickListener {
-
-            dialogBuilder
-                .withTitle("Modal Dialog")
-                .withMessage("This is a modal Dialog.")
-                .show()
+            startActivity(Intent(mContext, BaiduAiActivity::class.java))
         }
 
 
@@ -80,11 +74,18 @@ class MyselfActivity : BaseActivity() {
     }
 
 
+
+    private fun showDialog(){
+        var dialogBuilder = NiftyDialogBuilder.getInstance(this)
+        dialogBuilder
+            .withTitle("Modal Dialog")
+            .withMessage("This is a modal Dialog.")
+            .show()
+    }
+
+
     private fun showTime() {
-
-
         dpd.show()
-
     }
 
 

@@ -8,6 +8,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
+import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
@@ -28,7 +29,7 @@ class LoginActivity : BaseActivity() {
 
 
     override fun layoutId(): Int {
-        return com.lixinxinlove.notelove.R.layout.activity_login
+        return R.layout.activity_login
 
     }
 

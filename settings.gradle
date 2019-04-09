@@ -1,1 +1,1 @@
-include ':App', ':BaseLibrary', ':TimesSquareLibrary'
+include ':App', ':BaseLibrary', ':TimesSquareLibrary', ':BaiduAiLibrary'

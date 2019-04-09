@@ -11,7 +11,7 @@ import com.kotlin.base.widgets.ProgressLoading
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected lateinit var mContext: Context
+    var mContext: Context=this
     abstract fun layoutId(): Int
     abstract fun listener()
     lateinit var mProgressLoading: ProgressLoading
