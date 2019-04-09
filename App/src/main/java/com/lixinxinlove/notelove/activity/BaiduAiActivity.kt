@@ -60,12 +60,13 @@ class BaiduAiActivity : BaseActivity() {
     inner class MyOnTouchListener : View.OnTouchListener {
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             when (event!!.actionMasked) {
-
                 MotionEvent.ACTION_DOWN -> {
                     start()
                     Toast.makeText(mContext, "按下", Toast.LENGTH_SHORT).show()
                 }
-
+                MotionEvent.ACTION_MOVE -> {
+                    Toast.makeText(mContext, "移动", Toast.LENGTH_SHORT).show()
+                }
                 MotionEvent.ACTION_UP -> {
                     stop()
                     Toast.makeText(mContext, "抬起", Toast.LENGTH_SHORT).show()
