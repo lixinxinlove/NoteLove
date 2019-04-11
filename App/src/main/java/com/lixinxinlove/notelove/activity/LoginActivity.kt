@@ -3,12 +3,14 @@ package com.lixinxinlove.notelove.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import android.util.Log
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
@@ -26,16 +28,29 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity : BaseActivity() {
 
-
-
+    /**
+     * 系统提供的振动服务
+     */
+    private var vibrator: Vibrator? = null
+    private var shake: Animation? = null
     override fun layoutId(): Int {
-        return R.layout.activity_login
+        return com.lixinxinlove.notelove.R.layout.activity_login
 
     }
 
     override fun listener() {
         btnSingIn.setOnClickListener {
             //登录
+
+            if(etPhone.text.toString().isEmpty()){
+                etPhone.startAnimation(shake)
+            }
+            //当电话号码为空的时候，就去振动手机提醒用户
+          //  vibrator.vibrate(2000)
+           // val pattern = longArrayOf(200, 200, 300, 300, 1000, 2000)
+            //-1不重复 0循环振动 1；
+            //vibrator.vibrate(pattern, -1)
+
             singIn(etPhone.text.toString().trim(), etPassword.text.toString().trim())
         }
 
@@ -44,6 +59,8 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        shake = AnimationUtils.loadAnimation(this, com.lixinxinlove.notelove.R.anim.shake)
+        vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator?
     }
 
 

@@ -72,8 +72,6 @@ dependencies {
 
 
     api 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
-
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }

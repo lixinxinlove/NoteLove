@@ -9,10 +9,11 @@
         tools:context=".activity.WelcomeActivity">
 
     <ImageView
-            android:scaleType="fitStart"
+            android:scaleType="centerCrop"
             android:src="@mipmap/welcome_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            tools:ignore="ContentDescription"/>
 
 
     <TextView
