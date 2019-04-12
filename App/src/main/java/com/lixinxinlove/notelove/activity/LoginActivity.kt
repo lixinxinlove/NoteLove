@@ -45,6 +45,10 @@ class LoginActivity : BaseActivity() {
             if(etPhone.text.toString().isEmpty()){
                 etPhone.startAnimation(shake)
             }
+
+            if(etPassword.text.toString().isEmpty()){
+                etPassword.startAnimation(shake)
+            }
             //当电话号码为空的时候，就去振动手机提醒用户
           //  vibrator.vibrate(2000)
            // val pattern = longArrayOf(200, 200, 300, 300, 1000, 2000)
