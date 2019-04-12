@@ -54,10 +54,6 @@
 
 
     <Button
-            android:shadowColor="#ffff00"
-            android:shadowDx="10"
-            android:shadowDy="10"
-            android:shadowRadius="2"
             style="?android:attr/borderlessButtonStyle"
             android:id="@+id/mBtnLogout"
             android:layout_marginRight="20dp"

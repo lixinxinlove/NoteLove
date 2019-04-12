@@ -40,10 +40,8 @@ class MyselfActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener { finish() }
         mBtnLogout.setOnClickListener {
             //logoutAlertDialog()
-
             showTime()
         }
-
 
         headView.setOnClickListener {
             startActivity(Intent(mContext, BaiduAiActivity::class.java))
