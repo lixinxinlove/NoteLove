@@ -8,11 +8,9 @@ import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.notelove.adapter.ImageListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
@@ -68,17 +66,6 @@ class LoginActivity : BaseActivity() {
         shake = AnimationUtils.loadAnimation(this, com.lixinxinlove.notelove.R.anim.shake)
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator?
 
-
-        mLoginRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-        var mData: MutableList<String> = mutableListOf()
-        for (i in 0..10) {
-            mData.add("llll $i")
-        }
-
-        val mAdapter = ImageListAdapter(mData)
-
-        mLoginRecyclerView.adapter = mAdapter
     }
 
 
