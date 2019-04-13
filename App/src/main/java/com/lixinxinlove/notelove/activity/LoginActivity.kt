@@ -8,9 +8,11 @@ import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
 import com.lixinxinlove.base.activity.BaseActivity
+import com.lixinxinlove.notelove.adapter.ImageListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
@@ -42,16 +44,16 @@ class LoginActivity : BaseActivity() {
         btnSingIn.setOnClickListener {
             //登录
 
-            if(etPhone.text.toString().isEmpty()){
+            if (etPhone.text.toString().isEmpty()) {
                 etPhone.startAnimation(shake)
             }
 
-            if(etPassword.text.toString().isEmpty()){
+            if (etPassword.text.toString().isEmpty()) {
                 etPassword.startAnimation(shake)
             }
             //当电话号码为空的时候，就去振动手机提醒用户
-          //  vibrator.vibrate(2000)
-           // val pattern = longArrayOf(200, 200, 300, 300, 1000, 2000)
+            //  vibrator.vibrate(2000)
+            // val pattern = longArrayOf(200, 200, 300, 300, 1000, 2000)
             //-1不重复 0循环振动 1；
             //vibrator.vibrate(pattern, -1)
 
@@ -65,6 +67,18 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         shake = AnimationUtils.loadAnimation(this, com.lixinxinlove.notelove.R.anim.shake)
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator?
+
+
+        mLoginRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        var mData: MutableList<String> = mutableListOf()
+        for (i in 0..10) {
+            mData.add("llll $i")
+        }
+
+        val mAdapter = ImageListAdapter(mData)
+
+        mLoginRecyclerView.adapter = mAdapter
     }
 
 
@@ -105,3 +119,4 @@ class LoginActivity : BaseActivity() {
     }
 
 }
+

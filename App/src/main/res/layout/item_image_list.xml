@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llItem">
+
+    <ImageView
+            android:scaleType="fitXY"
+            android:src="@mipmap/welcome_bg"
+            android:layout_width="120dp"
+            android:layout_height="200dp"/>
+
+
+    <TextView
+            android:textColor="@color/common_black"
+            android:textSize="@dimen/text_size"
+            android:text="111111"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_info"
+            android:layout_marginRight="@dimen/def_margin_right"
+            android:layout_marginLeft="@dimen/def_margin_Left"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
+
+

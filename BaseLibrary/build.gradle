@@ -72,5 +72,4 @@ dependencies {
     api project(':TimesSquareLibrary')
     api project(':BaiduAiLibrary')
     api project(':PullToRefresh')
-
 }
