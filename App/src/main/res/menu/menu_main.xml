@@ -8,6 +8,13 @@
           android:orderInCategory="100"
           app:showAsAction="never"/>
 
+
+    <item android:id="@+id/action_stack_layout_manager"
+          android:title="@string/action_stack_layout_manager"
+          android:icon="@mipmap/shezhi"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+
     <item
             android:icon="@mipmap/user"
             android:id="@+id/action_sign_in"

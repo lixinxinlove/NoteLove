@@ -107,14 +107,19 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            com.lixinxinlove.notelove.R.id.action_settings -> {
+            R.id.action_settings -> {
                 val listDialog = ListDialog(mContext)
                 //listDialog.show()
                 startActivity(Intent(mContext, SelectTimeActivity::class.java))
                 return true
             }
 
-            com.lixinxinlove.notelove.R.id.action_sign_in -> {    //登录
+           R.id.action_stack_layout_manager -> {
+                startActivity(Intent(mContext, StackLayoutManagerActivity::class.java))
+                return true
+            }
+
+            R.id.action_sign_in -> {    //登录
                 if (NoteApp.isLogin) {
                     startActivity(Intent(mContext, MyselfActivity::class.java))
                 } else {

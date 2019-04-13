@@ -1,10 +1,5 @@
 package com.lixinxinlove.notelove.layoutmanager;
 
-/**
- * Created by CJJ on 2017/10/16.
- *
- * @author CJJ
- */
 
 enum Align {
 

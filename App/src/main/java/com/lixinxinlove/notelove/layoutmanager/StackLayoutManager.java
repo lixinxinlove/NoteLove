@@ -3,33 +3,26 @@ package com.lixinxinlove.notelove.layoutmanager;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static android.support.v7.widget.RecyclerView.NO_POSITION;
-import static com.lixinxinlove.layoutmanagerdemo.Align.*;
+import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
+import static com.lixinxinlove.notelove.layoutmanager.Align.*;
 
-/**
- * my thought is simple：we assume the first item in the initial state is the base position ，
- * we only need to calculate the appropriate position{@link #left(int index)}for the given item
- * index with the given offset{@link #mTotalOffset}.After solve this thinking confusion ,this
- * layoutManager is easy to implement
- *
- */
 
-class StackLayoutManager extends RecyclerView.LayoutManager {
+public class StackLayoutManager extends RecyclerView.LayoutManager {
 
     private static final String TAG = "StackLayoutManager";
 
-    //the space unit for the stacked item
-    private int mSpace = 60;
+    //the space unit for the stacked item  //item 之间的距离
+    private int mSpace = 20;//60
     /**
      * the offset unit,deciding current position(the sum of  {@link #mItemWidth} and {@link #mSpace})
      */
@@ -46,13 +39,15 @@ class StackLayoutManager extends RecyclerView.LayoutManager {
     private int duration = 300;
     private RecyclerView.Recycler recycler;
     private int lastAnimateValue;
-    //the max stacked item count;
+    //the max stacked item count;  //层叠的个数
     private int maxStackCount = 2;
-    //initial stacked item
-    private int initialStackCount = 4;
-    private float secondaryScale = 0.8f;
-    private float scaleRatio = 0.4f;
-    private float parallex = 1f;
+    //initial stacked item  可见显示第几个
+    private int initialStackCount = 1;//4
+    //缩放的比例
+    private float secondaryScale = 0.9f;//0.8
+    //被覆盖的透明度
+    private float scaleRatio = 0.2f;//0.4
+    private float parallex = 1f;//1
     private int initialOffset;
     private boolean initial;
     private int mMinVelocityX;
@@ -495,12 +490,12 @@ class StackLayoutManager extends RecyclerView.LayoutManager {
 
                 int baseStart = (int) (mSpace * maxStackCount + mUnit - tail + closestBaseItemScale * (mUnit - mSpace) + mSpace);
                 left = (int) (baseStart + (position - currPos - 2) * mUnit - (position - currPos - 2) * (1 - secondaryScale) * (mUnit - mSpace));
-                if (BuildConfig.DEBUG)
-                    Log.i(TAG, "ltr: currPos " + currPos
-                            + "  pos:" + position
-                            + "  left:" + left
-                            + "   baseStart" + baseStart
-                            + " currPos+1:" + left(currPos + 1));
+//                if (BuildConfig.DEBUG)
+//                    Log.i(TAG, "ltr: currPos " + currPos
+//                            + "  pos:" + position
+//                            + "  left:" + left
+//                            + "   baseStart" + baseStart
+//                            + " currPos+1:" + left(currPos + 1));
             }
             left = left <= 0 ? 0 : left;
         }
