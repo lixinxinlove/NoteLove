@@ -8,15 +8,28 @@
         tools:context=".activity.StackLayoutManagerActivity">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/mCardRecyclerView"
+    <in.srain.cube.views.ptr.PtrFrameLayout
+            android:id="@+id/mPtrFrameLayout"
+            app:ptr_resistance="1.7"
+            app:ptr_ratio_of_header_height_to_refresh="1.2"
+            app:ptr_duration_to_close="300"
+            app:ptr_duration_to_close_header="2000"
+            app:ptr_keep_header_when_refresh="true"
+            app:ptr_pull_to_fresh="false"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-    >
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/mCardRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
 
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </in.srain.cube.views.ptr.PtrFrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
