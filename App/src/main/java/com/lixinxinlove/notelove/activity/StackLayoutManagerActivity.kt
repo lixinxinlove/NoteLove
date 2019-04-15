@@ -56,7 +56,7 @@ class StackLayoutManagerActivity : BaseActivity() {
                 mPtrFrameLayout.postDelayed({
                     frame!!.refreshComplete()
                     Toast.makeText(mContext,"结束",Toast.LENGTH_SHORT).show()
-                },2000)
+                },20000)
             }
 
             override fun checkCanDoRefresh(frame: PtrFrameLayout?, content: View?, header: View?): Boolean {
