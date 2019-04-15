@@ -1,6 +1,9 @@
 package com.lixinxinlove.notelove.activity
 
-import `in`.srain.cube.views.ptr.*
+import `in`.srain.cube.views.ptr.PtrDefaultHandler
+import `in`.srain.cube.views.ptr.PtrEventHeader
+import `in`.srain.cube.views.ptr.PtrFrameLayout
+import `in`.srain.cube.views.ptr.PtrHandler
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -43,6 +46,8 @@ class StackLayoutManagerActivity : BaseActivity() {
         header.setPadding(0, 30, 0, 30)
         mPtrFrameLayout.headerView = header
         mPtrFrameLayout.addPtrUIHandler(header)
+        mPtrFrameLayout.isPullToRefresh=false
+        mPtrFrameLayout.isKeepHeaderWhenRefresh = true
 
         mPtrFrameLayout.setPtrHandler(object : PtrHandler{
             override fun onRefreshBegin(frame: PtrFrameLayout?) {
@@ -60,5 +65,13 @@ class StackLayoutManagerActivity : BaseActivity() {
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header)
             }
         })
+
+
+        mPtrFrameLayout.postDelayed({
+            mPtrFrameLayout.autoRefresh(true)
+        },100)
+
+
+
     }
 }

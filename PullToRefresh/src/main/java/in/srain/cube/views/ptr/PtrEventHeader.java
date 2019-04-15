@@ -1,28 +1,22 @@
 package in.srain.cube.views.ptr;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.TypedArray;
-import android.text.TextUtils;
+import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import in.srain.cube.views.ptr.indicator.PtrIndicator;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * 自定义header
  */
 public class PtrEventHeader extends FrameLayout implements PtrUIHandler {
 
-    private View mProgressBar;
     private TextView mPtrHeaderText;
+    private ImageView mLoading;
 
     public PtrEventHeader(Context context) {
         super(context);
@@ -41,8 +35,8 @@ public class PtrEventHeader extends FrameLayout implements PtrUIHandler {
 
     protected void initViews() {
         View header = LayoutInflater.from(getContext()).inflate(R.layout.ptr_event_header, this);
-        mProgressBar = header.findViewById(R.id.ptr_header_rotate_view_progressbar);
         mPtrHeaderText = header.findViewById(R.id.ptr_header_text);
+        mLoading = header.findViewById(R.id.iv_loading);
         resetView();
     }
 
@@ -53,7 +47,7 @@ public class PtrEventHeader extends FrameLayout implements PtrUIHandler {
     }
 
     private void resetView() {
-        mProgressBar.setVisibility(VISIBLE);
+        mPtrHeaderText.setText("下拉刷新");
     }
 
     @Override
@@ -63,20 +57,26 @@ public class PtrEventHeader extends FrameLayout implements PtrUIHandler {
 
     @Override
     public void onUIRefreshPrepare(PtrFrameLayout frame) {
-        mProgressBar.setVisibility(INVISIBLE);
-        mPtrHeaderText.setText("Prepare");
+        if (frame.isPullToRefresh()) {
+            mPtrHeaderText.setText("下拉刷新");
+        } else {
+            mPtrHeaderText.setText("下拉刷新");
+        }
     }
 
     @Override
     public void onUIRefreshBegin(PtrFrameLayout frame) {
-        mProgressBar.setVisibility(VISIBLE);
-        mPtrHeaderText.setText("开始");
+        mPtrHeaderText.setText("加载中...");
+
+        mLoading.setImageResource(R.drawable.event_progress_loading);
+        AnimationDrawable animationDrawable = (AnimationDrawable) mLoading.getDrawable();
+        animationDrawable.start();
+
     }
 
     @Override
     public void onUIRefreshComplete(PtrFrameLayout frame) {
-        mProgressBar.setVisibility(INVISIBLE);
-        mPtrHeaderText.setText("结束");
+        mPtrHeaderText.setText("加载结束");
     }
 
 
@@ -90,28 +90,24 @@ public class PtrEventHeader extends FrameLayout implements PtrUIHandler {
         if (currentPos < mOffsetToRefresh && lastPos >= mOffsetToRefresh) {
             if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 crossRotateLineFromBottomUnderTouch(frame);
-
             }
         } else if (currentPos > mOffsetToRefresh && lastPos <= mOffsetToRefresh) {
             if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 crossRotateLineFromTopUnderTouch(frame);
-
             }
         }
     }
 
     private void crossRotateLineFromTopUnderTouch(PtrFrameLayout frame) {
         if (!frame.isPullToRefresh()) {
-
+            mPtrHeaderText.setText("松手立即刷新");
         }
     }
 
     private void crossRotateLineFromBottomUnderTouch(PtrFrameLayout frame) {
 
         if (frame.isPullToRefresh()) {
-
-        } else {
-
+            mPtrHeaderText.setText("下拉刷新");
         }
     }
 

@@ -1,31 +1,31 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:1-8:12
 	package
-		ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:4:5-39
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:4:5-39
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:6:5-30
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:6:5-30
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:11-69
+		ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:3:11-69
 	android:versionCode
-		ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:5:5-28
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml:5:5-28
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
 uses-sdk
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-		ADDED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
-		INJECTED from E:\work\as\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProject\NoteLove\TimesSquareLibrary\src\main\AndroidManifest.xml
