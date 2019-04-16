@@ -101,7 +101,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(com.lixinxinlove.notelove.R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
@@ -111,6 +111,12 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
                 val listDialog = ListDialog(mContext)
                 //listDialog.show()
                 startActivity(Intent(mContext, SelectTimeActivity::class.java))
+                return true
+            }
+
+
+            R.id.action_tu_jia -> {
+                startActivity(Intent(mContext, TuJiaHomeActivity::class.java))
                 return true
             }
 
