@@ -44,11 +44,11 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     private var mNoDataView: View? = null
 
     override fun layoutId(): Int {
-        return com.lixinxinlove.notelove.R.layout.activity_note_list
+        return R.layout.activity_note_list
     }
 
     override fun listener() {
-        mNoteSwipeRefreshLayout.setColorSchemeResources(com.lixinxinlove.notelove.R.color.common_blue_light)
+        mNoteSwipeRefreshLayout.setColorSchemeResources(R.color.common_blue_light)
         mNoteSwipeRefreshLayout.setOnRefreshListener(this)
 
         fab.setOnClickListener { view ->

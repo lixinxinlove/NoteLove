@@ -23,6 +23,7 @@ import com.baidu.speech.EventManagerFactory
 import com.baidu.speech.asr.SpeechConstant
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.base.utils.GsonUtil
+import com.lixinxinlove.notelove.R.layout
 import kotlinx.android.synthetic.main.activity_baidu_ai.*
 import org.json.JSONObject
 import java.util.*
@@ -44,7 +45,7 @@ class BaiduAiActivity : BaseActivity() {
     private lateinit var asr: EventManager
 
     override fun layoutId(): Int {
-        return com.lixinxinlove.notelove.R.layout.activity_baidu_ai
+        return layout.activity_baidu_ai
     }
 
     override fun listener() {
