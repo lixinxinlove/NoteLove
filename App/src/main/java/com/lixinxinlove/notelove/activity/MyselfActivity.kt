@@ -13,7 +13,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
@@ -39,8 +38,7 @@ class MyselfActivity : BaseActivity() {
     override fun listener() {
         toolbar.setNavigationOnClickListener { finish() }
         mBtnLogout.setOnClickListener {
-            //logoutAlertDialog()
-            showTime()
+            showDialog()
         }
 
         headView.setOnClickListener {
@@ -72,29 +70,17 @@ class MyselfActivity : BaseActivity() {
     }
 
 
-
-    private fun showDialog(){
+    private fun showDialog() {
         var dialogBuilder = NiftyDialogBuilder.getInstance(this)
+
         dialogBuilder
-            .withTitle("Modal Dialog")
-            .withMessage("This is a modal Dialog.")
+            .withTitle("提示")
+            .withMessage("亲！要退出吗？.")
+            .withButton1Text("取消")
+            .withButton2Text("退出")
+            .setButton1Click { dialogBuilder.dismiss() }
+            .setButton2Click { logout()}
             .show()
-    }
-
-
-    private fun showTime() {
-        dpd.show()
-    }
-
-
-    private fun logoutAlertDialog() {
-        AlertDialog.Builder(mContext)
-            .setTitle("提示").setMessage("亲！要退出吗？")
-            .setNegativeButton("取消") { dialog, which -> dialog.dismiss() }
-            .setPositiveButton("确定") { dialog, which -> logout() }
-            .create()
-            .show()
-
     }
 
     private fun logout() {
