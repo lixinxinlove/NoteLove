@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.Toast
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
@@ -73,9 +74,14 @@ class MyselfActivity : BaseActivity() {
     private fun showDialog() {
         var dialogBuilder = NiftyDialogBuilder.getInstance(this)
 
+
         dialogBuilder
-            .withTitle("提示")
-            .withMessage("亲！要退出吗？.")
+            .withEffect(Effectstype.Flipv)
+            .withDialogColor("#FFFFFF")
+            .withMessageColor("#1996f9")
+            .withMessage("亲！要退出吗？")
+            .withTitleColor("#1996f9")
+            .withDividerColor("#A948FF")
             .withButton1Text("取消")
             .withButton2Text("退出")
             .setButton1Click { dialogBuilder.dismiss() }
