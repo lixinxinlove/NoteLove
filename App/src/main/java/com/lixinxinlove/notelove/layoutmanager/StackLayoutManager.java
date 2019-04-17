@@ -77,13 +77,14 @@ public class StackLayoutManager extends RecyclerView.LayoutManager {
 
     @Override
     public boolean isAutoMeasureEnabled() {
-        return  true;
+        return true;
     }
 
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-        if (getItemCount() <= 0)
+        if (getItemCount() <= 0) {
             return;
+        }
         this.recycler = recycler;
         detachAndScrapAttachedViews(recycler);
         //got the mUnit basing on the first child,of course we assume that  all the item has the same size
@@ -91,9 +92,11 @@ public class StackLayoutManager extends RecyclerView.LayoutManager {
         measureChildWithMargins(anchorView, 0, 0);
         mItemWidth = anchorView.getMeasuredWidth();
         mItemHeight = anchorView.getMeasuredHeight();
-        if (canScrollHorizontally())
+        if (canScrollHorizontally()) {
             mUnit = mItemWidth + mSpace;
-        else mUnit = mItemHeight + mSpace;
+        } else {
+            mUnit = mItemHeight + mSpace;
+        }
         //because this method will be called twice
         initialOffset = resolveInitialOffset();
         mMinVelocityX = ViewConfiguration.get(anchorView.getContext()).getScaledMinimumFlingVelocity();
@@ -109,20 +112,23 @@ public class StackLayoutManager extends RecyclerView.LayoutManager {
             mPendingScrollPosition = NO_POSITION;
         }
 
-        if (direction == LEFT)
+        if (direction == LEFT) {
             return offset;
-        if (direction == RIGHT)
+        } else if (direction == RIGHT) {
             return -offset;
-        if (direction == TOP)
+        } else if (direction == TOP) {
             return offset;
-        else return offset;
+        } else {
+            return offset;
+        }
     }
 
     @Override
     public void onLayoutCompleted(RecyclerView.State state) {
         super.onLayoutCompleted(state);
-        if (getItemCount()<=0)
+        if (getItemCount() <= 0) {
             return;
+        }
         if (!initial) {
             fill(recycler, initialOffset, false);
             initial = true;
