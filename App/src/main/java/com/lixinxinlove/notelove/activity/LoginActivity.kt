@@ -7,6 +7,7 @@ import android.os.Vibrator
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.convert
@@ -14,10 +15,8 @@ import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.app.NoteApp
 import com.lixinxinlove.notelove.config.NoteConfig
 import com.lixinxinlove.notelove.data.api.NoteApi
-import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Function
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
@@ -39,6 +38,8 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun listener() {
+        toolbar.setNavigationOnClickListener { finish() }
+
         btnSingIn.setOnClickListener {
             //登录
 
@@ -58,8 +59,22 @@ class LoginActivity : BaseActivity() {
             singIn(etPhone.text.toString().trim(), etPassword.text.toString().trim())
         }
 
-        toolbar.setNavigationOnClickListener { finish() }
+        btnRegister.setOnClickListener {
+            if (etPhone.text.toString().isEmpty()) {
+                etPhone.startAnimation(shake)
+                return@setOnClickListener
+            }
+
+            if (etPassword.text.toString().isEmpty()) {
+                etPassword.startAnimation(shake)
+                return@setOnClickListener
+            }
+
+            register(etPhone.text.toString().trim(), etPassword.text.toString().trim())
+        }
+
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,13 +88,11 @@ class LoginActivity : BaseActivity() {
     fun singIn(phone: String, password: String) {
         mProgressLoading.showLoading()
         RetrofitFactory.instance.create(NoteApi::class.java).login(phone, password).convert()
-            .map(object : Function<User, User> {
-                override fun apply(t: User): User {
-                    NoteDataBaseHelper.getInstance(applicationContext).appDataBase.userDao().insert(t)
-                    Log.e("singIn", "保存数据")
-                    return t
-                }
-            })
+            .map { t ->
+                NoteDataBaseHelper.getInstance(applicationContext).appDataBase.userDao().insert(t)
+                Log.e("singIn", "保存数据")
+                t
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -97,6 +110,44 @@ class LoginActivity : BaseActivity() {
                 onError = {
                     mProgressLoading.hideLoading()
                     Log.e("subscribeBy", "onError")
+                    it.printStackTrace()
+                },
+                onComplete = {
+                    mProgressLoading.hideLoading()
+                    Log.e("subscribeBy", "onComplete")
+                })
+    }
+
+
+    //注册
+    @SuppressLint("CheckResult")
+    private fun register(phone: String, password: String) {
+
+        mProgressLoading.showLoading()
+        RetrofitFactory.instance.create(NoteApi::class.java).register(phone, password).convert()
+            .map { t ->
+                NoteDataBaseHelper.getInstance(applicationContext).appDataBase.userDao().insert(t)
+                Log.e("singIn", "保存数据")
+                t
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    val userInfo = it
+                    Log.e("注册成功", userInfo.toString())
+                    Log.e("subscribeBy", "onSuccess")
+                    NoteApp.isLogin = true
+                    NoteApp.user = userInfo
+                    var intent = Intent()
+                    intent.action = NoteConfig.LOGIN_ACTION
+                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent)
+                    finish()
+                },
+                onError = {
+                    mProgressLoading.hideLoading()
+                    Log.e("subscribeBy", "onError")
+                    Toast.makeText(mContext,"注册失败",Toast.LENGTH_LONG).show()
                     it.printStackTrace()
                 },
                 onComplete = {

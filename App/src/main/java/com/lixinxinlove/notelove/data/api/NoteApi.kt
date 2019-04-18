@@ -19,6 +19,13 @@ interface NoteApi {
     fun login(@Field("phone") phone: String, @Field("password") password: String): Observable<BaseResp<User>>
 
 
+    @FormUrlEncoded
+    @Headers("contentType:application/json, application/x-www-form-urlencoded")
+    @POST("user/register")
+    // fun login(@Body req: LoginReq):Observable<BaseResp<User>>
+    fun register(@Field("phone") phone: String, @Field("password") password: String): Observable<BaseResp<User>>
+
+
     @Headers("contentType: application/x-www-form-urlencoded")
     @GET("address/list")
     fun addressList(@Query(value = "userId") userId: Int): Observable<BaseResp<List<User>>>
