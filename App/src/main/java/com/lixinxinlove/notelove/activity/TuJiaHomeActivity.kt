@@ -4,12 +4,15 @@ import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
+import android.view.animation.BounceInterpolator
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import kotlinx.android.synthetic.main.activity_tu_jia_home.*
 
 class TuJiaHomeActivity : BaseActivity() {
+
+
+    private lateinit var animator: ObjectAnimator
 
     override fun layoutId(): Int {
         return R.layout.activity_tu_jia_home
@@ -30,15 +33,12 @@ class TuJiaHomeActivity : BaseActivity() {
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             when (event!!.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
-
-                    Toast.makeText(mContext, "按下", Toast.LENGTH_SHORT).show()
+                    moveToTop()
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Toast.makeText(mContext, "移动", Toast.LENGTH_SHORT).show()
                 }
                 MotionEvent.ACTION_UP -> {
-                    moveToTop()
-                    Toast.makeText(mContext, "抬起", Toast.LENGTH_SHORT).show()
+                    animator.reverse()
                 }
             }
             return true
@@ -46,10 +46,10 @@ class TuJiaHomeActivity : BaseActivity() {
     }
 
 
-
     private fun moveToTop() {
-        var animator: ObjectAnimator = ObjectAnimator.ofFloat(llMain, "translationY", 100f, 0f)
+        animator = ObjectAnimator.ofFloat(llMain, "translationY", 0f, 1000f)
         animator.duration = 2000
+        animator.interpolator = BounceInterpolator()
         animator.start()
     }
 
