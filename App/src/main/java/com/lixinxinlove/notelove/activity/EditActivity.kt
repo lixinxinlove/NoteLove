@@ -219,6 +219,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                 MotionEvent.ACTION_UP -> {
                     stop()
                     btnLongSpeech.text = "长按说话"
+                    tvHint.text=""
                 }
             }
             return true
@@ -248,6 +249,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                     if (!params!!.isEmpty()) {
                         bestResult = GsonUtil.getValueByKey(params, "best_result")
                         resultType = GsonUtil.getValueByKey(params, "result_type")
+                        tvHint.text=bestResult
                         if (resultType.equals("final_result")) {
                             finalResult = GsonUtil.getValueByKey(params!!, "best_result")
                             Log.e("bestResult", bestResult)
@@ -262,7 +264,7 @@ class EditActivity : BaseActivity(), View.OnClickListener {
 
                 }
                 SpeechConstant.CALLBACK_EVENT_ASR_EXIT -> {
-
+                    tvHint.text=""
                 }
                 else -> {
 

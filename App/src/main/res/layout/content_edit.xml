@@ -22,7 +22,6 @@
             android:letterSpacing="0.1"
             tools:text="我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我"
             android:lineSpacingExtra="5dp"
-            android:layout_weight="1"
             android:minLines="10"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.2"
@@ -37,6 +36,6 @@
             android:layout_marginLeft="@dimen/def_margin_Left"
             android:layout_marginRight="@dimen/def_margin_right"
             android:layout_width="match_parent"
-            android:layout_height="0dp"/>
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>
