@@ -51,7 +51,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         mNoteSwipeRefreshLayout.setColorSchemeResources(R.color.common_blue_light)
         mNoteSwipeRefreshLayout.setOnRefreshListener(this)
 
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             startActivityForResult(Intent(this, EditActivity::class.java), REQUEST_EDIT_CODE)
         }
     }
@@ -64,7 +64,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         mData = mutableListOf()
         mAdapter = NoteListAdapter(mData)
         mAdapter!!.emptyView = mNoDataView
-        mAdapter!!.setOnItemChildClickListener(this)
+        mAdapter!!.onItemChildClickListener = this
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
         getNotes()
@@ -120,7 +120,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
                 return true
             }
 
-           R.id.action_stack_layout_manager -> {
+            R.id.action_stack_layout_manager -> {
                 startActivity(Intent(mContext, StackLayoutManagerActivity::class.java))
                 return true
             }

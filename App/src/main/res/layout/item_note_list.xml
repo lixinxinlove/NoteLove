@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mcxtzhang.swipemenulib.SwipeMenuLayout
+<androidx.cardview.widget.CardView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="@dimen/def_margin_right"
+        android:layout_marginEnd="@dimen/def_margin_right"
+        style="@style/MatchWrap"
+        app:cardCornerRadius="5dp">
+
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+            android:layout_width="match_parent"
+            android:clickable="true"
+            android:layout_height="wrap_content">
 
 
-    <LinearLayout style="@style/MatchWrap.Vertical"
-                  android:id="@+id/llItem">
+        <LinearLayout style="@style/MatchWrap.Vertical"
+                      android:id="@+id/llItem">
 
-        <TextView
-                android:textColor="@color/common_black"
-                android:textSize="@dimen/text_size"
-                android:text="111111"
-                android:layout_marginTop="10dp"
-                android:id="@+id/tv_info"
-                android:layout_marginRight="@dimen/def_margin_right"
-                android:layout_marginLeft="@dimen/def_margin_Left"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                    android:textColor="@color/common_black"
+                    android:textSize="@dimen/text_size"
+                    android:text="111111"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_info"
+                    android:layout_marginEnd="@dimen/def_margin_right"
+                    android:layout_marginStart="@dimen/def_margin_Left"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-                android:textColor="@color/common_blue_dark"
-                android:text="20:10"
-                android:textSize="14sp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/tv_time"
-                android:layout_marginRight="@dimen/def_margin_right"
-                android:layout_marginLeft="@dimen/def_margin_Left"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/common_blue_dark"
+                    android:text="20:10"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_time"
+                    android:layout_marginEnd="@dimen/def_margin_right"
+                    android:layout_marginStart="@dimen/def_margin_Left"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <View
-                android:layout_marginRight="@dimen/def_margin_right"
-                android:layout_marginLeft="@dimen/def_margin_Left"
-                android:layout_marginTop="10dp"
-                android:background="@color/common_divider"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
+        </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/llDelete"
-            android:background="@color/common_blue_dark"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_width="90dp"
-            android:layout_height="match_parent">
-
-
-        <ImageView
-                android:src="@mipmap/delete"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
-        <TextView
-                android:layout_marginTop="2dp"
-                android:textSize="12sp"
-                android:textColor="@color/common_white"
-                android:text="删除"
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:id="@+id/llDelete"
+                android:background="@color/common_blue_dark"
                 android:gravity="center"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical"
+                android:layout_width="90dp"
+                android:layout_height="match_parent">
 
-    </LinearLayout>
 
-</com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+            <ImageView
+                    android:src="@mipmap/delete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"/>
+            <TextView
+                    android:layout_marginTop="2dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/common_white"
+                    android:text="删除"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+
+</androidx.cardview.widget.CardView>
 
 
