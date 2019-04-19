@@ -96,13 +96,23 @@
 -keep public class * extends android.preference.Preference              # 保持哪些类不被混淆
 -keep public class com.android.vending.licensing.ILicensingService      # 保持哪些类不被混淆
 
-
+# 保留R下面的资源
+-keep class **.R$* {*;}
 #=========================保持内部类不被混淆==============================
 #-keepclassmembers class com.eventmosh.evente.activity.EventSelectCourierCompanyActivity$Company {
 #   public *;
 #}
 
-
+# 移除Log类打印各个等级日志的代码，打正式包的时候可以做为禁log使用，这里可以作为禁止log打印的功能使用
+# 记得proguard-android.txt中一定不要加-dontoptimize才起作用
+# 另外的一种实现方案是通过BuildConfig.DEBUG的变量来控制
+-assumenosideeffects class android.util.Log {
+    public static int v(...);
+    public static int i(...);
+    public static int w(...);
+    public static int d(...);
+    public static int e(...);
+}
 
 
 #=====================================================
@@ -141,3 +151,24 @@
 
 # for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-keep class retrofit2.** { *; }
+-dontwarn retrofit2.**
+-keepattributes Signature
+-keepattributes Exceptions
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+
+#----------- rxjava rxandroid----------------
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+-dontnote rx.internal.util.PlatformDependent

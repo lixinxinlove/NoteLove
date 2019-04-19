@@ -6,6 +6,7 @@
         android:layout_marginStart="@dimen/def_margin_right"
         android:layout_marginEnd="@dimen/def_margin_right"
         style="@style/MatchWrap"
+        app:cardElevation="2dp"
         app:cardCornerRadius="5dp">
 
     <com.mcxtzhang.swipemenulib.SwipeMenuLayout

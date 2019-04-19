@@ -2,9 +2,12 @@ package com.lixinxinlove.notelove.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Outline
 import android.os.Bundle
 import android.os.Vibrator
 import android.util.Log
+import android.view.View
+import android.view.ViewOutlineProvider
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -81,6 +84,18 @@ class LoginActivity : BaseActivity() {
         shake = AnimationUtils.loadAnimation(this, com.lixinxinlove.notelove.R.anim.shake)
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator?
 
+
+        val viewOutlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                view.clipToOutline = true
+                //outline.setOval(0, 0, view.width, view.height)
+                outline.setRect(toolbar.left, toolbar.top, toolbar.right, toolbar.bottom)
+
+            }
+        }
+      //  toolbar.outlineProvider = viewOutlineProvider
+
+
     }
 
 
@@ -147,7 +162,7 @@ class LoginActivity : BaseActivity() {
                 onError = {
                     mProgressLoading.hideLoading()
                     Log.e("subscribeBy", "onError")
-                    Toast.makeText(mContext,"注册失败",Toast.LENGTH_LONG).show()
+                    Toast.makeText(mContext, "注册失败", Toast.LENGTH_LONG).show()
                     it.printStackTrace()
                 },
                 onComplete = {
@@ -155,6 +170,7 @@ class LoginActivity : BaseActivity() {
                     Log.e("subscribeBy", "onComplete")
                 })
     }
+
 
 }
 

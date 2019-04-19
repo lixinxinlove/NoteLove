@@ -7,8 +7,8 @@
         android:layout_height="match_parent"
         tools:context=".activity.LoginActivity">
 
-
     <Toolbar
+            android:elevation="2dp"
             android:titleTextColor="@color/common_white"
             android:navigationIcon="@mipmap/left"
             android:title="登录"

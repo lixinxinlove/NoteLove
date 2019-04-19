@@ -211,11 +211,14 @@ class EditActivity : BaseActivity(), View.OnClickListener {
             when (event!!.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
                     start()
+                    btnLongSpeech.text = "开始输入"
                 }
                 MotionEvent.ACTION_MOVE -> {
+                    btnLongSpeech.text = "输入中..."
                 }
                 MotionEvent.ACTION_UP -> {
                     stop()
+                    btnLongSpeech.text = "长按说话"
                 }
             }
             return true
@@ -245,13 +248,10 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                     if (!params!!.isEmpty()) {
                         bestResult = GsonUtil.getValueByKey(params, "best_result")
                         resultType = GsonUtil.getValueByKey(params, "result_type")
-
-                        insertText(mInfo,bestResult)
-
                         if (resultType.equals("final_result")) {
                             finalResult = GsonUtil.getValueByKey(params!!, "best_result")
                             Log.e("bestResult", bestResult)
-                            mInfo.setText(finalResult)
+                            insertText(mInfo, finalResult)
                         }
                     }
                 }

@@ -15,7 +15,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,6 +32,9 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            // Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
@@ -41,8 +44,6 @@ android {
             shrinkResources false
             signingConfig signingConfigs.release
         }
-
-
     }
 }
 
