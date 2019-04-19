@@ -23,7 +23,7 @@ android {
     signingConfigs {
         release {
             storeFile file('xiaobenben.jks')
-            storePassword 'lixinxin123'
+            storePassword ' '
             keyAlias 'xiaobenben'
             keyPassword 'lixinxin123'
         }
