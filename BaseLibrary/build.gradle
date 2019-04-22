@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -23,8 +23,8 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
     //support
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
     api 'com.google.android.material:material:1.1.0-alpha05'
@@ -36,8 +36,8 @@ dependencies {
     // gson
     api 'com.google.code.gson:gson:2.8.5'
     // glide4
-    api 'com.github.bumptech.glide:glide:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
     api 'jp.wasabeef:glide-transformations:3.3.0'
     // If you want to use the GPU Filters
     api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
@@ -63,12 +63,11 @@ dependencies {
     api 'com.github.yalantis:ucrop:2.2.2'
     kapt "androidx.room:room-compiler:${roomVersion}"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
-    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
 
 
     api 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     api project(':TimesSquareLibrary')
     api project(':BaiduAiLibrary')
     api project(':PullToRefresh')

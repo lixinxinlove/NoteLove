@@ -5,17 +5,9 @@ android {
   buildToolsVersion "28.0.3"
 
   defaultConfig {
-    minSdkVersion 24
-  }
-
-  lintOptions {
-    warning 'MissingTranslation'
-    textReport true
-    textOutput 'stdout'
+    minSdkVersion 21
   }
 }
 
-dependencies {
-}
 
 
