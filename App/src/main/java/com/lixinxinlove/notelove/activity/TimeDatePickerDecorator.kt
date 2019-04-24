@@ -9,7 +9,6 @@ class TimeDatePickerDecorator : CalendarCellDecorator {
     override fun decorate(cellView: CalendarCellView, date: Date) {
 
         if (cellView.isSelectable) {   //可以选择的日期
-            val json = cellView.getTag().toString()
             if (cellView.isSelected) {   //被选择的日期
                 when {
                     cellView.rangeState == RangeState.FIRST -> {      //被选择的日期开始
