@@ -7,7 +7,6 @@ import com.lixinxinlove.base.utils.DateTimeUtils
 import com.lixinxinlove.notelove.R
 import com.squareup.timessquare.CalendarCellDecorator
 import com.squareup.timessquare.CalendarPickerView
-import com.squareup.timessquare.TimeDatePickerDecorator
 import kotlinx.android.synthetic.main.activity_select_time.*
 import java.util.*
 

@@ -15,6 +15,7 @@
             android:layout_height="match_parent">
 
         <com.squareup.timessquare.CalendarPickerView
+                app:tsquare_dividerColor="@android:color/transparent"
                 app:tsquare_headerTextColor="#333333"
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
