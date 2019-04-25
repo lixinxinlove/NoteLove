@@ -5,6 +5,8 @@
         android:viewportHeight="100"
         android:viewportWidth="100">
 
+
+
     <path
             android:name="lee"
             android:pathData="M0,0,V100,H40,V50,H60,V100,H100V0,z"

@@ -4,5 +4,6 @@
     android:propertyName="trimPathEnd"
     android:repeatCount="-1"
     android:valueFrom="0"
+    android:interpolator="@android:anim/bounce_interpolator"
     android:valueTo="1"
     android:valueType="floatType"/>
