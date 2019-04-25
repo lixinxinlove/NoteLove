@@ -1,10 +1,12 @@
 package com.lixinxinlove.notelove.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import kotlinx.android.synthetic.main.activity_welcome.*
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_welcome.*
 /**
  * 欢迎页
  */
+
 class WelcomeActivity : BaseActivity() {
 
     override fun layoutId(): Int {
@@ -33,10 +36,15 @@ class WelcomeActivity : BaseActivity() {
         tvLogoName.startAnimation(shake)
 
 
+        val anim:AnimatedVectorDrawable = resources.getDrawable(R.drawable.anim_logo,theme) as AnimatedVectorDrawable
+        logo.setImageDrawable(anim)
+        anim.start()
+
+
 
         rootView.postDelayed({
             startActivity(Intent(this, NoteListActivity::class.java))
             finish()
-        }, 3000)
+        }, 5000)
     }
 }
