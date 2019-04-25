@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.BounceInterpolator
+import com.kotlin.base.utils.GlideUtils
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.notelove.R
 import kotlinx.android.synthetic.main.activity_tu_jia_home.*
 
 class TuJiaHomeActivity : BaseActivity() {
 
+    private val url = "http://pic3.nipic.com/20090701/1242397_161620025_2.jpg"
 
     private lateinit var animator: ObjectAnimator
 
@@ -25,6 +27,9 @@ class TuJiaHomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        GlideUtils.load(this, url, mImageView)
 
     }
 
