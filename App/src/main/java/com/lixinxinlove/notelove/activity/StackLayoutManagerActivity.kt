@@ -27,11 +27,11 @@ class StackLayoutManagerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mCardRecyclerView.layoutManager = StackLayoutManager()
 
-        var mData: MutableList<String> = mutableListOf()
+        val mData: MutableList<String> = mutableListOf()
         for (i in 0..10) {
             mData.add("llll $i")
         }
-        var mAdapter = ImageListAdapter(mData)
+        val mAdapter = ImageListAdapter(mData)
         mCardRecyclerView.adapter = mAdapter
         initPtrFrameLayout()
     }
