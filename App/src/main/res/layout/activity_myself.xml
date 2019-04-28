@@ -30,7 +30,8 @@
 
 
         <ImageView
-                android:padding="2dp"
+                android:scaleType="fitXY"
+                android:padding="10dp"
                 android:background="@color/common_red"
                 android:src="@mipmap/kongzhuangtai"
                 android:layout_marginStart="16dp"
