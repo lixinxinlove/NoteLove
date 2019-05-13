@@ -23,13 +23,8 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-<<<<<<< HEAD
     androidTestImplementation 'androidx.test:runner:1.2.0-beta01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
-=======
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
->>>>>>> 893eb74a87c166fe1700d4df5b8f78e41e0b00ae
     //support
     api 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     api 'com.google.android.material:material:1.1.0-alpha06'
