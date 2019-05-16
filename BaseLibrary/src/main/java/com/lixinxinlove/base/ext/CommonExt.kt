@@ -1,5 +1,6 @@
 package com.kotlin.base.ext
 
+import android.util.Log
 import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.base.rx.BaseFunc
 import com.kotlin.base.rx.BaseFuncBoolean

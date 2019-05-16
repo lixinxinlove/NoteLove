@@ -93,8 +93,6 @@ class LoginActivity : BaseActivity() {
 
             }
         }
-      //  toolbar.outlineProvider = viewOutlineProvider
-
 
     }
 

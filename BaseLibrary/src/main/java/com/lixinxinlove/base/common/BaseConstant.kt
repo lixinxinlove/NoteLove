@@ -8,8 +8,6 @@ class BaseConstant{
 
         //本地服务器地址
         const val SERVER_ADDRESS = "http://www.lixinxinlove.com:8080/notelove/"
-       // const val SERVER_ADDRESS = "http://192.168.2.209:8080/"
-        //const val SERVER_ADDRESS = "http://192.168.25.1:8080/"
         //SP表名
         const val TABLE_PREFS = "Kotlin_mall"
         //Token Key
