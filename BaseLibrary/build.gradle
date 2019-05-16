@@ -38,7 +38,7 @@ dependencies {
     // glide4
     api 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
-    api 'jp.wasabeef:glide-transformations:3.3.0'
+    api 'jp.wasabeef:glide-transformations:4.0.0'
     // If you want to use the GPU Filters
     api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     // RxKotlin and RxAndroid
