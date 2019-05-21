@@ -53,11 +53,6 @@ class MyselfActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         //  mTvUserName.text = NoteApp.user!!.name
 
-        dpd = DatePickerDialog(this)
-        dpd.setOnDateSetListener { view, year, month, dayOfMonth ->
-            Log.e("lee", "$year,$month,$dayOfMonth")
-        }
-
 
         val viewOutlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
@@ -66,7 +61,6 @@ class MyselfActivity : BaseActivity() {
             }
         }
         headView.outlineProvider = viewOutlineProvider
-
 
     }
 
@@ -80,6 +74,7 @@ class MyselfActivity : BaseActivity() {
             .withDialogColor("#FFFFFF")
             .withMessageColor("#1996f9")
             .withMessage("亲！要退出吗？")
+            .withTitle("重要提示")
             .withTitleColor("#1996f9")
             .withDividerColor("#A948FF")
             .withButton1Text("取消")

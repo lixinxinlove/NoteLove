@@ -309,8 +309,8 @@ class EditActivity : BaseActivity(), View.OnClickListener {
                 Log.e("permissions", "进入到这里代表没有权限")
             }
         }
-        val tmpList = arrayOfNulls<String>(toApplyList.size)
-        if (!toApplyList.isEmpty()) {
+       // val tmpList = arrayOfNulls<String>(toApplyList.size)
+        if (toApplyList.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, toApplyList.toTypedArray(), REQUESTCODE)
         }
     }
