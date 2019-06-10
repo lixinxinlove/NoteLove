@@ -81,5 +81,7 @@ dependencies {
 
     api 'androidx.recyclerview:recyclerview:1.0.0'
 
+    api 'com.airbnb.android:lottie:3.0.6'
+
 
 }
