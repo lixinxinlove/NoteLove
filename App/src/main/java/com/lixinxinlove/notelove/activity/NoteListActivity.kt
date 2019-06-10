@@ -1,21 +1,28 @@
 package com.lixinxinlove.notelove.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
+import com.bigkoo.convenientbanner.holder.Holder
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.kotlin.base.utils.GlideUtils
 import com.lixinxinlove.notelove.R
 import com.lixinxinlove.notelove.adapter.NoteListAdapter
 import com.lixinxinlove.notelove.app.NoteApp
+import com.lixinxinlove.notelove.app.NoteApp.Companion.mContext
 import com.lixinxinlove.notelove.data.protocol.Note
+import com.lixinxinlove.notelove.data.protocol.User
 import com.lixinxinlove.notelove.dialog.ListDialog
 import com.lixinxinlove.notelove.server.NoteSyncService
 import com.lixinxinlove.user.data.db.NoteDataBaseHelper
@@ -33,6 +40,7 @@ import kotlinx.android.synthetic.main.content_main.*
 class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListener,
     BaseQuickAdapter.OnItemChildClickListener {
 
+
     private val TAG = "NoteListActivity"
 
     private val REQUEST_EDIT_CODE = 100
@@ -42,6 +50,7 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     private var mData: MutableList<Note>? = null
 
     private var mNoDataView: View? = null
+
 
     override fun layoutId(): Int {
         return R.layout.activity_note_list
@@ -60,6 +69,9 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
+
+
+        setBanner()
         mNoDataView = View.inflate(mContext, R.layout.view_no_data, null)
         mData = mutableListOf()
         mAdapter = NoteListAdapter(mData)
@@ -68,7 +80,41 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         mNoteRecyclerView.layoutManager = LinearLayoutManager(mContext)
         mNoteRecyclerView.adapter = mAdapter
         getNotes()
+
     }
+
+    private fun setBanner() {
+
+        convenientBanner.setPages(object : CBViewHolderCreator {
+            override fun createHolder(itemView: View?): Holder<Int> {
+                return myHolder(itemView!!)
+            }
+
+            override fun getLayoutId(): Int {
+                return R.layout.item_localimage
+            }
+        }, mutableListOf())
+
+    }
+
+
+    inner class myHolder(itemView: View) : Holder<Int>(itemView) {
+
+        var imageView: ImageView? = null
+
+        override fun updateUI(data: Int?) {
+            GlideUtils.loadImage(
+                mContext,
+                "http://hbimg.b0.upaiyun.com/ea52c1c9e5df4039ce5275095a0649921ad083244d20a-Lf82xv_fw658",
+                imageView!!
+            )
+        }
+
+        override fun initView(itemView: View?) {
+            imageView = itemView!!.findViewById(R.id.iv)
+        }
+    }
+
 
     override fun loginAction() {
         Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show()

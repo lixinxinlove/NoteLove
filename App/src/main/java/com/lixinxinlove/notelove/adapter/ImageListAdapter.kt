@@ -17,9 +17,7 @@ class ImageListAdapter(data: MutableList<String>?) :
     }
 
 
-    override fun getItemCount(): Int {
-        return 100
-    }
+
 
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {

@@ -1,10 +1,7 @@
 package com.lixinxinlove.notelove.activity
 
 
-import `in`.srain.cube.views.ptr.PtrDefaultHandler
-import `in`.srain.cube.views.ptr.PtrFrameLayout
-import `in`.srain.cube.views.ptr.PtrHandler
-import `in`.srain.cube.views.ptr.header.MaterialHeader
+
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -50,37 +47,6 @@ class BaiduAiActivity : BaseActivity() {
 
     override fun listener() {
         btnSpeech.setOnTouchListener(MyOnTouchListener())
-
-
-      //  mPtrFrame.setLastUpdateTimeRelateObject(this)
-        mPtrFrame.disableWhenHorizontalMove(true)
-        val header = MaterialHeader(this)
-        header.setPadding(0, 30, 0, 30)
-       // header.initWithString("llllll")
-       // header.setTextColor(Color.GREEN)
-
-        mPtrFrame.headerView = header
-        mPtrFrame.addPtrUIHandler(header)
-
-        mPtrFrame.setPtrHandler(object : PtrHandler{
-            override fun onRefreshBegin(frame: PtrFrameLayout?) {
-
-
-                Log.e("BaiduAiActivity","onRefreshBegin")
-
-                mPtrFrame.postDelayed({
-                    frame!!.refreshComplete()
-                    Log.e("BaiduAiActivity","refreshComplete")
-                },2000)
-            }
-
-            override fun checkCanDoRefresh(frame: PtrFrameLayout?, content: View?, header: View?): Boolean {
-                // 默认实现，根据实际情况做改动
-                Log.e("BaiduAiActivity","checkCanDoRefresh")
-                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header)
-            }
-        })
-
     }
 
 
