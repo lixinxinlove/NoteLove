@@ -63,6 +63,16 @@ class NoteListActivity : BaseNoteActivity(), SwipeRefreshLayout.OnRefreshListene
         fab.setOnClickListener {
             startActivityForResult(Intent(this, EditActivity::class.java), REQUEST_EDIT_CODE)
         }
+
+        animation_view.setOnClickListener {
+          //  animation_view.setImageAssetsFolder("")
+          //  animation_view.setAnimation("tab_bar_icon_faxian_data.json")
+           // animation_view.loop(true)
+            animation_view.playAnimation()
+
+        }
+
+
     }
 
 
